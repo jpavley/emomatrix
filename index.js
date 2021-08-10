@@ -60,6 +60,7 @@ function drawText(ctx, textProps) {
 }
 
 function drawGrid(canvas, ctx) {
+
         // Grid Vertical
 
         for (let x = 0; x < 30 * tile.width; x += tile.width) {
@@ -124,17 +125,18 @@ function drawCenter(canvas, ctx) {
     });
 }
 
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawTextBox(ctx, canvas, textProps) {
 
-    drawGrid(canvas, ctx);
-    drawCenter(canvas, ctx);
+    // locations
+
+    let centerX = canvas.width / 2;
+    let centerY = canvas.height / 2;
 
     // text metrics
 
-    ctx.fillStyle = 'white';
-    ctx.font = '50px Arial';
-    const textMetrics = ctx.measureText(testText);
+    ctx.fillStyle = textProps.fillStyle;
+    ctx.font = textProps.font;
+    const textMetrics = ctx.measureText(textProps.message);
     let textTop = Math.abs(centerY - textMetrics.actualBoundingBoxAscent);
     let textBottom = Math.abs(centerY + textMetrics.actualBoundingBoxDescent);
     let textHeight = textBottom-textTop;
@@ -144,48 +146,77 @@ function draw() {
 
     // textTop
 
-    ctx.beginPath();
-    ctx.moveTo(0, textTop);
-    ctx.lineTo(canvas.width, textTop);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = 'yellow';
-    ctx.stroke();
+    drawLine(ctx, {
+        x1: 0,
+        y1: textTop,
+        x2: canvas.width,
+        y2: textTop,
+        strokeStyle: 'yellow',
+        lineWidth: 2   
+    });
 
     // textBottom
 
-    ctx.beginPath();
-    ctx.moveTo(0, textBottom);
-    ctx.lineTo(canvas.width, textBottom);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = 'orange';
-    ctx.stroke();
+    drawLine(ctx, {
+        x1: 0,
+        y1: textBottom,
+        x2: canvas.width,
+        y2: textBottom,
+        strokeStyle: 'orange',
+        lineWidth: 2   
+    });
 
     // textMid
 
-    ctx.beginPath();
-    ctx.moveTo(0, textMid);
-    ctx.lineTo(canvas.width, textMid);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = 'red';
-    ctx.stroke();
+    drawLine(ctx, {
+        x1: 0,
+        y1: textMid,
+        x2: canvas.width,
+        y2: textMid,
+        strokeStyle: 'red',
+        lineWidth: 2   
+    });
 
     // textLeft
 
-    ctx.beginPath();
-    ctx.moveTo(textLeft, 0);
-    ctx.lineTo(textLeft, canvas.height);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = 'cyan';
-    ctx.stroke();
+    drawLine(ctx, {
+        x1: textLeft,
+        y1: 0,
+        x2: textLeft,
+        y2: canvas.height,
+        strokeStyle: 'cyan',
+        lineWidth: 2   
+    });
 
     // textRight
 
-    ctx.beginPath();
-    ctx.moveTo(textRight, 0);
-    ctx.lineTo(textRight, canvas.height);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = 'chartreuse';
-    ctx.stroke();
+    drawLine(ctx, {
+        x1: textRight,
+        y1: 0,
+        x2: textRight,
+        y2: canvas.height,
+        strokeStyle: 'chartreuse',
+        lineWidth: 2   
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawGrid(canvas, ctx);
+    drawCenter(canvas, ctx);
+
+    drawTextBox(ctx, canvas, {
+        message: testText,
+        x: 0,
+        y: 0,
+        fillStyle: 'white',
+        font: '50px Arial'    
+    });
+
+    ctx.fillStyle = 'white';
+    ctx.font = '50px Arial';
+    const textMetrics = ctx.measureText(testText);
 
     ctx.fillText(testText, centerX - textMetrics.width/2, centerY);
 

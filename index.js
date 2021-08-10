@@ -23,56 +23,112 @@ let centerY = canvas.height / 2;
 // drawing and animation
 const game = {requestID: ''};
 
+const lineProps = {
+    x1: 0,
+    y1: 0,
+    x2: 0,
+    y2: 0,
+    strokeStyle: '',
+    lineWidth: 0
+};
+
+function drawLine(ctx, lineProps) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(lineProps.x1, lineProps.y1);
+    ctx.lineTo(lineProps.x2, lineProps.y2);
+    ctx.lineWidth = lineProps.lineWidth;
+    ctx.strokeStyle = lineProps.strokeStyle;
+    ctx.stroke();
+    ctx.restore();
+}
+
+const textProps = {
+    message: '',
+    x: 0,
+    y: 0,
+    fillStyle: '',
+    font: ''
+};
+
+function drawText(ctx, textProps) {
+    ctx.save();
+    ctx.fillStyle = textProps.fillStyle;
+    ctx.font = textProps.font;
+    ctx.fillText(textProps.message, textProps.x, textProps.y);    
+    ctx.restore();
+}
+
+function drawGrid(canvas, ctx) {
+        // Grid Vertical
+
+        for (let x = 0; x < 30 * tile.width; x += tile.width) {
+
+            drawLine(ctx, {
+                x1: x,
+                y1: 0,
+                x2: x,
+                y2: canvas.height,
+                strokeStyle: '333',
+                lineWidth: 2            
+            });
+    
+            drawText(ctx, {
+                message: x,
+                x: x - 4,
+                y: 20,
+                fillStyle: 'gray',
+                font: '12px Arial'            
+            });
+        }
+    
+       // Grid Horizonal
+    
+        for (let y = 0; y < 30 * tile.width; y += tile.width) {
+
+            drawLine(ctx, {
+                x1: 0,
+                y1: y,
+                x2: canvas.width,
+                y2: y,
+                strokeStyle: '333',
+                lineWidth: 2            
+            });
+
+            drawText(ctx, {
+                message: y,
+                x: 10,
+                y: y + 4,
+                fillStyle: 'gray',
+                font: '12px Arial'            
+            });
+        }
+}
+
+function drawCenter(canvas, ctx) {
+    drawLine(ctx, {
+        x1: 0,
+        y1: centerY,
+        x2: canvas.width,
+        y2: centerY,
+        strokeStyle: 'darkgray',
+        lineWidth: 4    
+    });
+    drawLine(ctx, {
+        x1: centerX,
+        y1: 0,
+        x2: centerX,
+        y2: canvas.height,
+        strokeStyle: 'darkgray',
+        lineWidth: 4    
+    });
+}
+
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Grid Vertical
-
-    for (let x = 0; x < 30 * tile.width; x += tile.width) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, canvas.height);
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = 'gray';
-        ctx.stroke();
-
-        ctx.fillStyle = "gray";
-        ctx.font = '14px Arial';
-        ctx.fillText(x, x, 25);    
-    }
-
-   // Grid Horizonal
-
-    for (let y = 0; y < 30 * tile.width; y += tile.width) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(canvas.width, y);
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = 'gray';
-        ctx.stroke();
-
-        ctx.fillStyle = "gray";
-        ctx.font = "14px Arial"
-        ctx.fillText(y, 15, y);    
-    }
-
-    // centerY
-
-    ctx.beginPath();
-    ctx.moveTo(0, centerY);
-    ctx.lineTo(canvas.width, centerY);
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = 'darkgray';
-    ctx.stroke();
-
-    // centerX
-
-    ctx.beginPath();
-    ctx.moveTo(centerX, 0);
-    ctx.lineTo(centerX, canvas.height);
-    ctx.lineWidth = 4;
-    ctx.strokeStyle = 'darkgray';
-    ctx.stroke();
+    drawGrid(canvas, ctx);
+    drawCenter(canvas, ctx);
 
     // text metrics
 

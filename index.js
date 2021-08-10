@@ -26,7 +26,7 @@ const game = {requestID: ''};
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Grid
+    // Grid Vertical
 
     for (let x = 0; x < 30 * tile.width; x += tile.width) {
         ctx.beginPath();
@@ -41,6 +41,8 @@ function draw() {
         ctx.fillText(x, x, 25);    
     }
 
+   // Grid Horizonal
+
     for (let y = 0; y < 30 * tile.width; y += tile.width) {
         ctx.beginPath();
         ctx.moveTo(0, y);
@@ -54,51 +56,79 @@ function draw() {
         ctx.fillText(y, 15, y);    
     }
 
-    // center
+    // centerY
 
     ctx.beginPath();
     ctx.moveTo(0, centerY);
     ctx.lineTo(canvas.width, centerY);
     ctx.lineWidth = 4;
-    ctx.strokeStyle = 'gray';
+    ctx.strokeStyle = 'darkgray';
     ctx.stroke();
+
+    // centerX
 
     ctx.beginPath();
     ctx.moveTo(centerX, 0);
     ctx.lineTo(centerX, canvas.height);
     ctx.lineWidth = 4;
-    ctx.strokeStyle = 'gray';
+    ctx.strokeStyle = 'darkgray';
     ctx.stroke();
+
+    // text metrics
 
     ctx.fillStyle = 'white';
     ctx.font = '50px Arial';
     const textMetrics = ctx.measureText(testText);
-    console.log(textMetrics)
+    let textTop = Math.abs(centerY - textMetrics.actualBoundingBoxAscent);
+    let textBottom = Math.abs(centerY + textMetrics.actualBoundingBoxDescent);
+    let textHeight = textBottom-textTop;
+    let textMid = (textTop + (textHeight / 2));
+    let textLeft = centerX - (textMetrics.width/2);
+    let textRight = centerX + (textMetrics.width/2);
+
+    // textTop
 
     ctx.beginPath();
-    let textTop = Math.abs(centerY - textMetrics.actualBoundingBoxAscent);
     ctx.moveTo(0, textTop);
     ctx.lineTo(canvas.width, textTop);
     ctx.lineWidth = 2;
     ctx.strokeStyle = 'yellow';
     ctx.stroke();
 
+    // textBottom
+
     ctx.beginPath();
-    let textBottom = Math.abs(centerY + textMetrics.actualBoundingBoxDescent);
     ctx.moveTo(0, textBottom);
     ctx.lineTo(canvas.width, textBottom);
     ctx.lineWidth = 2;
     ctx.strokeStyle = 'orange';
     ctx.stroke();
 
-    let textHeight = textBottom-textTop;
+    // textMid
 
     ctx.beginPath();
-    let textMid = (textTop + (textHeight / 2));
     ctx.moveTo(0, textMid);
     ctx.lineTo(canvas.width, textMid);
     ctx.lineWidth = 2;
     ctx.strokeStyle = 'red';
+    ctx.stroke();
+
+    // textLeft
+
+    ctx.beginPath();
+    ctx.moveTo(textLeft, 0);
+    ctx.lineTo(textLeft, canvas.height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'cyan';
+    ctx.stroke();
+
+    // textRight
+
+    ctx.beginPath();
+    ctx.moveTo(textRight, 0);
+    ctx.lineTo(textRight, canvas.height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'chartreuse';
     ctx.stroke();
 
     ctx.fillText(testText, centerX - textMetrics.width/2, centerY);

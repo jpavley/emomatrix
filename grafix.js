@@ -1,3 +1,5 @@
+export const tile = { width: 30, height: 20 };
+
 export const lineProps = {
     x1: 0,
     y1: 0,
@@ -84,7 +86,7 @@ export function drawGrid(canvas, ctx) {
 export function drawCenter(canvas, ctx) {
 
     // locations
-    
+
     let centerX = canvas.width / 2;
     let centerY = canvas.height / 2;
 

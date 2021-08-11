@@ -1,10 +1,20 @@
 /**
  * Grafix,js
- * A simple graphics library of utilities for HTML5 Canvas.
+ * A simple graphics library of utilities for HTML5 Canvas (2D).
  */ 
  
+/**
+ * The tile defined the width and height of the canvas using
+ * a ratio of 3/2.
+ */
 export const tile = { width: 30, height: 20 };
 
+/**
+ * The basic properties required to draw a line.
+ * Includes geometry and style.
+ * - x1, y1: start point
+ * - x2, y2: end point
+ */
 export const lineProps = {
     x1: 0,
     y1: 0,
@@ -14,6 +24,13 @@ export const lineProps = {
     lineWidth: 0
 };
 
+/**
+ * Draws a line on the canvas using the lineProps.
+ * Assumes 2D canvas.
+ * Saves and restores context.
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {lineProps} lineProps 
+ */
 export function drawLine(ctx, lineProps) {
     ctx.save();
     ctx.beginPath();
@@ -25,6 +42,11 @@ export function drawLine(ctx, lineProps) {
     ctx.restore();
 }
 
+/**
+ * The basic properties required to draw text.
+ * Includes geometry and style.
+ * - message: text payload
+ */
 export const textProps = {
     message: '',
     x: 0,
@@ -33,6 +55,13 @@ export const textProps = {
     font: ''
 };
 
+/**
+ * Draws a text on the canvas using the textProps.
+ * Assumes 2D canvas.
+ * Saves and restores context.
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {textProps} textProps 
+ */
 export function drawText(ctx, textProps) {
     ctx.save();
     ctx.fillStyle = textProps.fillStyle;
@@ -41,6 +70,13 @@ export function drawText(ctx, textProps) {
     ctx.restore();
 }
 
+/**
+ * Draws a grid (with lables) on the canvas using tile props.
+ * Assumes 2D canvas.
+ * Saves and restores context (via drawLine and drawText).
+ * @param {HTMLCanvasElement} canvas 
+ * @param {CanvasRenderingContext2D} ctx 
+ */
 export function drawGrid(canvas, ctx) {
 
         // Grid Vertical
@@ -88,6 +124,13 @@ export function drawGrid(canvas, ctx) {
         }
 }
 
+/**
+ * Draws a reticle in the center of canvas. 
+ * Assumes 2D canvas.
+ * Saves and restores context (via drawLine).
+ * @param {HTMLCanvasElement} canvas 
+ * @param {CanvasRenderingContext2D} ctx 
+ */
 export function drawCenter(canvas, ctx) {
 
     // locations
@@ -113,6 +156,15 @@ export function drawCenter(canvas, ctx) {
     });
 }
 
+/**
+ * Draws a text bounding box what shows the width and height of a text object.
+ * Doesn't draw the text! Just the box around it!
+ * Assumes 2D canvas.
+ * Saves and restores context (via drawLine and drawText).
+ * @param {HTMLCanvasElement} canvas 
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {textProps} textProps 
+ */
 export function drawTextBox(ctx, canvas, textProps) {
 
     // locations

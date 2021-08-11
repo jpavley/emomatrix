@@ -160,7 +160,7 @@ export function drawCenter(canvas, ctx) {
  * Draws a text bounding box what shows the width and height of a text object.
  * Doesn't draw the text! Just the box around it!
  * Assumes 2D canvas.
- * Saves and restores context (via drawLine and drawText).
+ * Saves and restores context (via drawLine).
  * @param {HTMLCanvasElement} canvas 
  * @param {CanvasRenderingContext2D} ctx 
  * @param {textProps} textProps 

@@ -3,6 +3,12 @@
 
 import * as grafix from './grafix.js';
 
+// properties
+const showGrid = true;
+const showCenter = true;
+const showTextBox = true;
+
+
 // canvas and context
 const canvas = document.createElement('canvas');
 canvas.setAttribute('width', 30 * grafix.tile.width);
@@ -27,16 +33,23 @@ const game = {requestID: ''};
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    grafix.drawGrid(canvas, ctx);
-    grafix.drawCenter(canvas, ctx);
+    if (showGrid) {
+        grafix.drawGrid(canvas, ctx);
+    }
 
-    grafix.drawTextBox(ctx, canvas, {
-        message: testText,
-        x: 0,
-        y: 0,
-        fillStyle: 'white',
-        font: '50px Arial'    
-    });
+    if(showCenter) {
+        grafix.drawCenter(canvas, ctx);
+    }
+
+    if(showTextBox) {
+        grafix.drawTextBox(ctx, canvas, {
+            message: testText,
+            x: 0,
+            y: 0,
+            fillStyle: 'white',
+            font: '50px Arial'    
+        });    
+    }
 
     ctx.fillStyle = 'white';
     ctx.font = '50px Arial';

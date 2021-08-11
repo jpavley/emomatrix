@@ -3,12 +3,6 @@
 
 import * as grafix from './grafix.js';
 
-// properties
-const showGrid = true;
-const showCenter = true;
-const showTextBox = true;
-
-
 // canvas and context
 const canvas = document.createElement('canvas');
 canvas.setAttribute('width', 30 * grafix.tile.width);
@@ -22,6 +16,41 @@ let catFace = String.fromCodePoint(0x1F431);
 let dogFace = String.fromCodePoint(0x1F436);
 let grinFace = String.fromCodePoint(0x1F600);
 let testText = "Abcdefghij"+catFace+dogFace+grinFace;
+
+// Buttons
+
+let showGrid = true;
+const gridButton = document.createElement('button');
+gridButton.style.display = 'block';
+gridButton.textContent = "Show Grid";
+
+gridButton.addEventListener('click', () => {
+    showGrid = !showGrid;
+});
+
+document.body.append(gridButton);
+
+let showCenter = true;
+const centerButton = document.createElement('button');
+centerButton.style.display = 'block';
+centerButton.textContent = "Show Center";
+
+centerButton.addEventListener('click', () => {
+    showCenter = !showCenter;
+});
+
+document.body.append(centerButton);
+
+let showTextBox = true;
+const textBoxButton = document.createElement('button');
+textBoxButton.style.display = 'block';
+textBoxButton.textContent = "Show Text Box";
+
+textBoxButton.addEventListener('click', () => {
+    showTextBox = !showTextBox;
+});
+
+document.body.append(textBoxButton);
 
 // locations
 let centerX = canvas.width / 2;
@@ -57,7 +86,7 @@ function draw() {
 
     ctx.fillText(testText, centerX - textMetrics.width/2, centerY);
 
-    //game.requestID = requestAnimationFrame(draw);
+    game.requestID = requestAnimationFrame(draw);
 }
 
 // start

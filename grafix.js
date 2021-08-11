@@ -1,3 +1,8 @@
+/**
+ * Grafix,js
+ * A simple graphics library of utilities for HTML5 Canvas.
+ */ 
+ 
 export const tile = { width: 30, height: 20 };
 
 export const lineProps = {

@@ -49,4 +49,3 @@ function draw() {
 
 // start
 game.requestID = requestAnimationFrame(draw);
-

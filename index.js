@@ -17,41 +17,43 @@ let dogFace = String.fromCodePoint(0x1F436);
 let grinFace = String.fromCodePoint(0x1F600);
 let testText = "ABCdefgHij"+grinFace;
 
-// Buttons
-
-const buttonBar = document.createElement('div');
-buttonBar.style.display = 'block';
-document.body.append(buttonBar);
-
 let showGrid = true;
-const gridButton = document.createElement('button');
-gridButton.textContent = "Toggle Grid";
-
-gridButton.addEventListener('click', () => {
-    showGrid = !showGrid;
-});
-
-buttonBar.append(gridButton);
-
 let showCenter = true;
-const centerButton = document.createElement('button');
-centerButton.textContent = "Toggle Center";
-
-centerButton.addEventListener('click', () => {
-    showCenter = !showCenter;
-});
-
-buttonBar.append(centerButton);
-
 let showTextBox = true;
-const textBoxButton = document.createElement('button');
-textBoxButton.textContent = "Toggle Text Box";
 
-textBoxButton.addEventListener('click', () => {
-    showTextBox = !showTextBox;
-});
+function buttonBar() {
+    const buttonBar = document.createElement('div');
+    buttonBar.style.display = 'block';
+    document.body.append(buttonBar);
 
-buttonBar.append(textBoxButton);
+    const gridButton = document.createElement('button');
+    gridButton.textContent = "Toggle Grid";
+
+    gridButton.addEventListener('click', () => {
+        showGrid = !showGrid;
+    });
+
+    buttonBar.append(gridButton);
+
+    const centerButton = document.createElement('button');
+    centerButton.textContent = "Toggle Center";
+
+    centerButton.addEventListener('click', () => {
+        showCenter = !showCenter;
+    });
+
+    buttonBar.append(centerButton);
+
+    const textBoxButton = document.createElement('button');
+    textBoxButton.textContent = "Toggle Text Box";
+
+    textBoxButton.addEventListener('click', () => {
+        showTextBox = !showTextBox;
+    });
+
+    buttonBar.append(textBoxButton);
+}
+
 
 // locations
 let centerX = 200; //canvas.width / 2;
@@ -90,5 +92,7 @@ function draw() {
     game.requestID = requestAnimationFrame(draw);
 }
 
-// start
+// start/init
+
+buttonBar();
 game.requestID = requestAnimationFrame(draw);

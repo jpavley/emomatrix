@@ -15,7 +15,7 @@ const ctx = canvas.getContext('2d');
 let catFace = String.fromCodePoint(0x1F431);
 let dogFace = String.fromCodePoint(0x1F436);
 let grinFace = String.fromCodePoint(0x1F600);
-let testText = "Abcdefghij"+catFace+dogFace+grinFace;
+let testText = "ABCdefgHij"+grinFace;
 
 // Buttons
 
@@ -53,8 +53,8 @@ textBoxButton.addEventListener('click', () => {
 document.body.append(textBoxButton);
 
 // locations
-let centerX = canvas.width / 2;
-let centerY = canvas.height / 2;
+let centerX = 200; //canvas.width / 2;
+let centerY = 200; //canvas.height / 2;
 
 // drawing and animation
 const game = {requestID: ''};
@@ -73,8 +73,8 @@ function draw() {
     if(showTextBox) {
         grafix.drawTextBox(ctx, canvas, {
             message: testText,
-            x: 0,
-            y: 0,
+            x: centerX,
+            y: centerY,
             fillStyle: 'white',
             font: '50px Arial'    
         });    
@@ -84,7 +84,7 @@ function draw() {
     ctx.font = '50px Arial';
     const textMetrics = ctx.measureText(testText);
 
-    ctx.fillText(testText, centerX - textMetrics.width/2, centerY);
+    ctx.fillText(testText, centerX, centerY);
 
     game.requestID = requestAnimationFrame(draw);
 }

@@ -167,22 +167,17 @@ export function drawCenter(canvas, ctx) {
  */
 export function drawTextBox(ctx, canvas, textProps) {
 
-    // locations
-
-    let centerX = canvas.width / 2;
-    let centerY = canvas.height / 2;
-
     // text metrics
 
     ctx.fillStyle = textProps.fillStyle;
     ctx.font = textProps.font;
     const textMetrics = ctx.measureText(textProps.message);
-    let textTop = Math.abs(centerY - textMetrics.actualBoundingBoxAscent);
-    let textBottom = Math.abs(centerY + textMetrics.actualBoundingBoxDescent);
+    let textTop = Math.abs(textProps.y - textMetrics.actualBoundingBoxAscent);
+    let textBottom = Math.abs(textProps.y + textMetrics.actualBoundingBoxDescent);
     let textHeight = textBottom-textTop;
     let textMid = (textTop + (textHeight / 2));
-    let textLeft = centerX - (textMetrics.width/2);
-    let textRight = centerX + (textMetrics.width/2);
+    let textLeft = textProps.x;
+    let textRight = textProps.x + textMetrics.width;
 
     // textTop
 

@@ -156,6 +156,43 @@ export function drawCenter(canvas, ctx) {
     });
 }
 
+export const textBox = {
+    textTop: 0,
+    textBottom: 0,
+    textHeight: 0,
+    textMid: 0,
+    textLeft: 0,
+    textRight: 0,
+    textWidth: 0,
+    textHorizonalCenter: 0,
+    textVerticalCenter: 0
+};
+
+export function getTextBox(ctx, textProps) {
+    const textMetrics = ctx.measureText(textProps.message);
+
+    const textTop = Math.abs(textProps.y - textMetrics.actualBoundingBoxAscent);
+    const textBottom = Math.abs(textProps.y + textMetrics.actualBoundingBoxDescent);
+    const textHeight = textBottom-textTop;
+    const textMid = (textTop + (textHeight / 2));
+    const textLeft = textProps.x;
+    const textRight = textProps.x + textMetrics.width;
+
+    return {
+        textTop: textTop,
+        textBottom: textBottom,
+        textHeight: textHeight,
+        textMid: textMid,
+        textLeft: textLeft,
+        textRight: textRight,
+        textWidth: textMetrics.width,
+        textHorizonalCenter: textLeft + (textMetrics.width / 2),
+        textVerticalCenter: textMid
+    }
+}
+
+
+
 /**
  * Draws a text bounding box what shows the width and height of a text object.
  * Doesn't draw the text! Just the box around it!
@@ -171,21 +208,15 @@ export function drawTextBox(ctx, canvas, textProps) {
 
     ctx.fillStyle = textProps.fillStyle;
     ctx.font = textProps.font;
-    const textMetrics = ctx.measureText(textProps.message);
-    let textTop = Math.abs(textProps.y - textMetrics.actualBoundingBoxAscent);
-    let textBottom = Math.abs(textProps.y + textMetrics.actualBoundingBoxDescent);
-    let textHeight = textBottom-textTop;
-    let textMid = (textTop + (textHeight / 2));
-    let textLeft = textProps.x;
-    let textRight = textProps.x + textMetrics.width;
+    const tb = getTextBox(ctx, textProps);
 
     // textTop
 
     drawLine(ctx, {
         x1: 0,
-        y1: textTop,
+        y1: tb.textTop,
         x2: canvas.width,
-        y2: textTop,
+        y2: tb.textTop,
         strokeStyle: 'yellow',
         lineWidth: 2   
     });
@@ -194,9 +225,9 @@ export function drawTextBox(ctx, canvas, textProps) {
 
     drawLine(ctx, {
         x1: 0,
-        y1: textBottom,
+        y1: tb.textBottom,
         x2: canvas.width,
-        y2: textBottom,
+        y2: tb.textBottom,
         strokeStyle: 'orange',
         lineWidth: 2   
     });
@@ -205,9 +236,9 @@ export function drawTextBox(ctx, canvas, textProps) {
 
     drawLine(ctx, {
         x1: 0,
-        y1: textMid,
+        y1: tb.textMid,
         x2: canvas.width,
-        y2: textMid,
+        y2: tb.textMid,
         strokeStyle: 'red',
         lineWidth: 2   
     });
@@ -215,9 +246,9 @@ export function drawTextBox(ctx, canvas, textProps) {
     // textLeft
 
     drawLine(ctx, {
-        x1: textLeft,
+        x1: tb.textLeft,
         y1: 0,
-        x2: textLeft,
+        x2: tb.textLeft,
         y2: canvas.height,
         strokeStyle: 'cyan',
         lineWidth: 2   
@@ -226,9 +257,9 @@ export function drawTextBox(ctx, canvas, textProps) {
     // textRight
 
     drawLine(ctx, {
-        x1: textRight,
+        x1: tb.textRight,
         y1: 0,
-        x2: textRight,
+        x2: tb.textRight,
         y2: canvas.height,
         strokeStyle: 'chartreuse',
         lineWidth: 2   

@@ -234,3 +234,40 @@ export function drawTextBox(ctx, canvas, textProps) {
         lineWidth: 2   
     });
 }
+
+export let showGrid = true;
+export let showCenter = true;
+export let showTextBox = true;
+
+export function buttonBar() {
+    const buttonBar = document.createElement('div');
+    buttonBar.style.display = 'block';
+    document.body.append(buttonBar);
+
+    const gridButton = document.createElement('button');
+    gridButton.textContent = "Toggle Grid";
+
+    gridButton.addEventListener('click', () => {
+        showGrid = !showGrid;
+    });
+
+    buttonBar.append(gridButton);
+
+    const centerButton = document.createElement('button');
+    centerButton.textContent = "Toggle Center";
+
+    centerButton.addEventListener('click', () => {
+        showCenter = !showCenter;
+    });
+
+    buttonBar.append(centerButton);
+
+    const textBoxButton = document.createElement('button');
+    textBoxButton.textContent = "Toggle Text Box";
+
+    textBoxButton.addEventListener('click', () => {
+        showTextBox = !showTextBox;
+    });
+
+    buttonBar.append(textBoxButton);
+}

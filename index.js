@@ -31,58 +31,21 @@ let dogFace = String.fromCodePoint(0x1F436);
 let grinFace = String.fromCodePoint(0x1F600);
 let testText = catFace+grinFace+dogFace;
 
-let showGrid = true;
-let showCenter = true;
-let showTextBox = true;
-
-function buttonBar() {
-    const buttonBar = document.createElement('div');
-    buttonBar.style.display = 'block';
-    document.body.append(buttonBar);
-
-    const gridButton = document.createElement('button');
-    gridButton.textContent = "Toggle Grid";
-
-    gridButton.addEventListener('click', () => {
-        showGrid = !showGrid;
-    });
-
-    buttonBar.append(gridButton);
-
-    const centerButton = document.createElement('button');
-    centerButton.textContent = "Toggle Center";
-
-    centerButton.addEventListener('click', () => {
-        showCenter = !showCenter;
-    });
-
-    buttonBar.append(centerButton);
-
-    const textBoxButton = document.createElement('button');
-    textBoxButton.textContent = "Toggle Text Box";
-
-    textBoxButton.addEventListener('click', () => {
-        showTextBox = !showTextBox;
-    });
-
-    buttonBar.append(textBoxButton);
-}
-
 // drawing and animation
 const game = {requestID: ''};
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (showGrid) {
+    if (grafix.showGrid) {
         grafix.drawGrid(canvas, ctx);
     }
 
-    if(showCenter) {
+    if(grafix.showCenter) {
         grafix.drawCenter(canvas, ctx);
     }
 
-    if(showTextBox) {
+    if(grafix.showTextBox) {
         grafix.drawTextBox(ctx, canvas, {
             message: testText,
             x: clickX,
@@ -103,5 +66,5 @@ function draw() {
 
 // start/init
 
-buttonBar();
+grafix.buttonBar();
 game.requestID = requestAnimationFrame(draw);

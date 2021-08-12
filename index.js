@@ -19,38 +19,39 @@ let testText = "ABCdefgHij"+grinFace;
 
 // Buttons
 
+const buttonBar = document.createElement('div');
+buttonBar.style.display = 'block';
+document.body.append(buttonBar);
+
 let showGrid = true;
 const gridButton = document.createElement('button');
-gridButton.style.display = 'block';
-gridButton.textContent = "Show Grid";
+gridButton.textContent = "Toggle Grid";
 
 gridButton.addEventListener('click', () => {
     showGrid = !showGrid;
 });
 
-document.body.append(gridButton);
+buttonBar.append(gridButton);
 
 let showCenter = true;
 const centerButton = document.createElement('button');
-centerButton.style.display = 'block';
-centerButton.textContent = "Show Center";
+centerButton.textContent = "Toggle Center";
 
 centerButton.addEventListener('click', () => {
     showCenter = !showCenter;
 });
 
-document.body.append(centerButton);
+buttonBar.append(centerButton);
 
 let showTextBox = true;
 const textBoxButton = document.createElement('button');
-textBoxButton.style.display = 'block';
-textBoxButton.textContent = "Show Text Box";
+textBoxButton.textContent = "Toggle Text Box";
 
 textBoxButton.addEventListener('click', () => {
     showTextBox = !showTextBox;
 });
 
-document.body.append(textBoxButton);
+buttonBar.append(textBoxButton);
 
 // locations
 let centerX = 200; //canvas.width / 2;

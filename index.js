@@ -8,6 +8,20 @@ const canvas = document.createElement('canvas');
 canvas.setAttribute('width', 30 * grafix.tile.width);
 canvas.setAttribute('height', 30 * grafix.tile.height);
 canvas.style.backgroundColor = 'black';
+
+// locations
+let centerX = canvas.width / 2;
+let centerY = canvas.height / 2;
+let clickX = centerX;
+let clickY = centerY;
+
+canvas.addEventListener('click', (e) => {
+
+    const rect = canvas.getBoundingClientRect();
+    clickX = e.clientX - rect.left;
+    clickY = e.clientY - rect.top;
+});
+
 document.body.prepend(canvas);
 const ctx = canvas.getContext('2d');
 
@@ -15,7 +29,7 @@ const ctx = canvas.getContext('2d');
 let catFace = String.fromCodePoint(0x1F431);
 let dogFace = String.fromCodePoint(0x1F436);
 let grinFace = String.fromCodePoint(0x1F600);
-let testText = "ABCdefgHij"+grinFace;
+let testText = catFace+grinFace+dogFace;
 
 let showGrid = true;
 let showCenter = true;
@@ -54,11 +68,6 @@ function buttonBar() {
     buttonBar.append(textBoxButton);
 }
 
-
-// locations
-let centerX = 200; //canvas.width / 2;
-let centerY = 200; //canvas.height / 2;
-
 // drawing and animation
 const game = {requestID: ''};
 
@@ -76,8 +85,8 @@ function draw() {
     if(showTextBox) {
         grafix.drawTextBox(ctx, canvas, {
             message: testText,
-            x: centerX,
-            y: centerY,
+            x: clickX,
+            y: clickY,
             fillStyle: 'white',
             font: '50px Arial'    
         });    
@@ -87,7 +96,7 @@ function draw() {
     ctx.font = '50px Arial';
     const textMetrics = ctx.measureText(testText);
 
-    ctx.fillText(testText, centerX, centerY);
+    ctx.fillText(testText, clickX, clickY);
 
     game.requestID = requestAnimationFrame(draw);
 }

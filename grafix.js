@@ -269,6 +269,8 @@ export function drawTextBox(ctx, canvas, textProps) {
 export let showGrid = true;
 export let showCenter = true;
 export let showTextBox = true;
+export let showMouseCoordinates = true;
+export let showFPS = true;
 
 export function buttonBar() {
     const buttonBar = document.createElement('div');
@@ -301,4 +303,23 @@ export function buttonBar() {
     });
 
     buttonBar.append(textBoxButton);
+
+    const mouseCoordinatesButton = document.createElement('button');
+    mouseCoordinatesButton.textContent = "Toggle Mouse Coordinates";
+
+    mouseCoordinatesButton.addEventListener('click', () => {
+        showMouseCoordinates = !showMouseCoordinates;
+    });
+
+    buttonBar.append(mouseCoordinatesButton);
+
+    const fpsButton = document.createElement('button');
+    fpsButton.textContent = "Toggle FPS";
+
+    fpsButton.addEventListener('click', () => {
+        showFPS = !showFPS;
+    });
+
+    buttonBar.append(fpsButton);
+
 }

@@ -69,15 +69,15 @@ const game = {requestID: ''};
 function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (grafix.showGrid) {
+    if (grafix.buttonBarToggles.showGrid) {
         grafix.drawGrid(canvas, ctx);
     }
 
-    if(grafix.showCenter) {
+    if(grafix.buttonBarToggles.showCenter) {
         grafix.drawCenter(canvas, ctx);
     }
 
-    if(grafix.showTextBox) {
+    if(grafix.buttonBarToggles.showTextBox) {
         grafix.drawTextBox(ctx, canvas, {
             message: testText,
             x: clickX,

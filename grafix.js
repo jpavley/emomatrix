@@ -272,6 +272,25 @@ export let showTextBox = true;
 export let showMouseCoordinates = true;
 export let showFPS = true;
 
+export let buttonBarToggles = {
+    showGrid: true,
+    showCenter: true,
+    showTextBox: true,
+    showMouseCoordinates: true,
+    showFPS: true
+};
+
+function addButtonToBar(textContent, toggle, buttonBar) {
+    const newButton = document.createElement('button');
+    newButton.textContent = textContent;
+
+    newButton.addEventListener('click', () => {
+        toggle = !toggle;
+    });
+
+    buttonBar.append(newButton);
+}
+
 export function buttonBar() {
     const buttonBar = document.createElement('div');
     buttonBar.style.display = 'block';
@@ -281,16 +300,18 @@ export function buttonBar() {
     gridButton.textContent = "Toggle Grid";
 
     gridButton.addEventListener('click', () => {
-        showGrid = !showGrid;
+        buttonBarToggles.showGrid = !buttonBarToggles.showGrid;
     });
 
     buttonBar.append(gridButton);
+
+    //addButtonToBar("Toggle Grid", showGrid, buttonBar);
 
     const centerButton = document.createElement('button');
     centerButton.textContent = "Toggle Center";
 
     centerButton.addEventListener('click', () => {
-        showCenter = !showCenter;
+        buttonBarToggles.showCenter = !buttonBarToggles.showCenter;
     });
 
     buttonBar.append(centerButton);
@@ -299,7 +320,7 @@ export function buttonBar() {
     textBoxButton.textContent = "Toggle Text Box";
 
     textBoxButton.addEventListener('click', () => {
-        showTextBox = !showTextBox;
+        buttonBarToggles.showTextBox = !buttonBarToggles.showTextBox;
     });
 
     buttonBar.append(textBoxButton);
@@ -308,7 +329,7 @@ export function buttonBar() {
     mouseCoordinatesButton.textContent = "Toggle Mouse Coordinates";
 
     mouseCoordinatesButton.addEventListener('click', () => {
-        showMouseCoordinates = !showMouseCoordinates;
+        buttonBarToggles.showMouseCoordinates = !buttonBarToggles.showMouseCoordinates;
     });
 
     buttonBar.append(mouseCoordinatesButton);
@@ -317,9 +338,8 @@ export function buttonBar() {
     fpsButton.textContent = "Toggle FPS";
 
     fpsButton.addEventListener('click', () => {
-        showFPS = !showFPS;
+        buttonBarToggles.showFPS = !buttonBarToggles.showFPS;
     });
 
     buttonBar.append(fpsButton);
-
 }

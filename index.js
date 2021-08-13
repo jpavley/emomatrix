@@ -39,21 +39,21 @@ function drawMouseMove(ctx) {
     ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
 }
 
-let secondsPased = 0;
-let oldTimeStamp = 0;
 let fps = 0;
+let times = [];
 
 function drawFrameRate(ctx, timeStamp) {
+
+    while (times.length > 0 && times[0] <= (timeStamp - 1000)) {
+        times.shift(); // throw away first element
+    }
+
+    times.push(timeStamp);
+    fps = times.length;
+
     ctx.fillStyle = 'yellow';
     ctx.font = '14px monospace';
-
-    secondsPased = (timeStamp - oldTimeStamp) / 1000;
-    oldTimeStamp = timeStamp;
-    fps = Math.floor(1/secondsPased);
-
-    //console.log(secondsPased);
-
-    ctx.fillText(`FPS: ${fps}`, 830, 575);
+    ctx.fillText(`FPS: ${fps}`, 830, 575);    
 }
 
 document.body.prepend(canvas);

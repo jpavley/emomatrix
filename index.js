@@ -39,14 +39,19 @@ function drawMouseMove(ctx) {
     ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
 }
 
-let frameRate = 0;
-let previousFrameTime = 0;
-let timeStamp = performance.now();
+let secondsPased = 0;
+let oldTimeStamp = 0;
+let fps = 0;
 
-function drawFrameRate(ctx) {
+function drawFrameRate(ctx, timeStamp) {
     ctx.fillStyle = 'yellow';
     ctx.font = '14px monospace';
-    ctx.fillText(`${frameRate}`, 840, 575);
+
+    secondsPased = (timeStamp - oldTimeStamp) / 1000;
+    oldTimeStamp = timeStamp;
+    fps = Math.floor(1/secondsPased);
+
+    ctx.fillText(`FPS: ${fps}`, 830, 575);
 }
 
 document.body.prepend(canvas);
@@ -61,7 +66,7 @@ let testText = catFace+grinFace+dogFace;
 // drawing and animation
 const game = {requestID: ''};
 
-function draw() {
+function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if (grafix.showGrid) {
@@ -89,7 +94,7 @@ function draw() {
     ctx.fillText(testText, clickX, clickY);
 
     drawMouseMove(ctx);
-    drawFrameRate(ctx);
+    drawFrameRate(ctx, timeStamp);
 
     game.requestID = requestAnimationFrame(draw);
 }

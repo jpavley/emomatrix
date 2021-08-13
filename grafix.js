@@ -266,12 +266,6 @@ export function drawTextBox(ctx, canvas, textProps) {
     });
 }
 
-export let showGrid = true;
-export let showCenter = true;
-export let showTextBox = true;
-export let showMouseCoordinates = true;
-export let showFPS = true;
-
 export let buttonBarToggles = {
     showGrid: true,
     showCenter: true,
@@ -285,7 +279,7 @@ function addButtonToBar(textContent, toggle, buttonBar) {
     newButton.textContent = textContent;
 
     newButton.addEventListener('click', () => {
-        toggle = !toggle;
+        buttonBarToggles[toggle] = !buttonBarToggles[toggle];
     });
 
     buttonBar.append(newButton);
@@ -296,50 +290,9 @@ export function buttonBar() {
     buttonBar.style.display = 'block';
     document.body.append(buttonBar);
 
-    const gridButton = document.createElement('button');
-    gridButton.textContent = "Toggle Grid";
-
-    gridButton.addEventListener('click', () => {
-        buttonBarToggles.showGrid = !buttonBarToggles.showGrid;
-    });
-
-    buttonBar.append(gridButton);
-
-    //addButtonToBar("Toggle Grid", showGrid, buttonBar);
-
-    const centerButton = document.createElement('button');
-    centerButton.textContent = "Toggle Center";
-
-    centerButton.addEventListener('click', () => {
-        buttonBarToggles.showCenter = !buttonBarToggles.showCenter;
-    });
-
-    buttonBar.append(centerButton);
-
-    const textBoxButton = document.createElement('button');
-    textBoxButton.textContent = "Toggle Text Box";
-
-    textBoxButton.addEventListener('click', () => {
-        buttonBarToggles.showTextBox = !buttonBarToggles.showTextBox;
-    });
-
-    buttonBar.append(textBoxButton);
-
-    const mouseCoordinatesButton = document.createElement('button');
-    mouseCoordinatesButton.textContent = "Toggle Mouse Coordinates";
-
-    mouseCoordinatesButton.addEventListener('click', () => {
-        buttonBarToggles.showMouseCoordinates = !buttonBarToggles.showMouseCoordinates;
-    });
-
-    buttonBar.append(mouseCoordinatesButton);
-
-    const fpsButton = document.createElement('button');
-    fpsButton.textContent = "Toggle FPS";
-
-    fpsButton.addEventListener('click', () => {
-        buttonBarToggles.showFPS = !buttonBarToggles.showFPS;
-    });
-
-    buttonBar.append(fpsButton);
+    addButtonToBar("Toggle Grid", "showGrid", buttonBar);
+    addButtonToBar("Toggle Center", "showCenter", buttonBar);
+    addButtonToBar("Toggle Text Box", "showTextBox", buttonBar);
+    addButtonToBar("Toggle Mouse Coordinates", "showMouseCoordinates", buttonBar);
+    addButtonToBar("Toggle FPS", "showFPS", buttonBar);
 }

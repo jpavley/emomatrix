@@ -51,6 +51,8 @@ function drawFrameRate(ctx, timeStamp) {
     oldTimeStamp = timeStamp;
     fps = Math.floor(1/secondsPased);
 
+    //console.log(secondsPased);
+
     ctx.fillText(`FPS: ${fps}`, 830, 575);
 }
 
@@ -73,11 +75,11 @@ function draw(timeStamp) {
         grafix.drawGrid(canvas, ctx);
     }
 
-    if(grafix.buttonBarToggles.showCenter) {
+    if (grafix.buttonBarToggles.showCenter) {
         grafix.drawCenter(canvas, ctx);
     }
 
-    if(grafix.buttonBarToggles.showTextBox) {
+    if (grafix.buttonBarToggles.showTextBox) {
         grafix.drawTextBox(ctx, canvas, {
             message: testText,
             x: clickX,
@@ -93,8 +95,13 @@ function draw(timeStamp) {
 
     ctx.fillText(testText, clickX, clickY);
 
-    drawMouseMove(ctx);
-    drawFrameRate(ctx, timeStamp);
+    if (grafix.buttonBarToggles.showMouseCoordinates) {
+        drawMouseMove(ctx);
+    }
+
+    if (grafix.buttonBarToggles.showFPS) {
+        drawFrameRate(ctx, timeStamp);
+    }
 
     game.requestID = requestAnimationFrame(draw);
 }

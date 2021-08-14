@@ -41,6 +41,7 @@ function drawMouseMove(ctx) {
 
 let fps = 0;
 let times = [];
+let counter = 0;
 
 function drawFrameRate(ctx, timeStamp) {
 
@@ -49,7 +50,11 @@ function drawFrameRate(ctx, timeStamp) {
     }
 
     times.push(timeStamp);
-    fps = times.length;
+    counter += 1;
+    if (counter > 10) {
+        fps = times.length;
+        counter = 0;
+    }
 
     ctx.fillStyle = 'yellow';
     ctx.font = '14px monospace';

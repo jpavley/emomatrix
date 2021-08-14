@@ -88,7 +88,7 @@ export function drawGrid(canvas, ctx) {
                 y1: 0,
                 x2: x,
                 y2: canvas.height,
-                strokeStyle: '333',
+                strokeStyle: '#333',
                 lineWidth: 2            
             });
     
@@ -110,7 +110,7 @@ export function drawGrid(canvas, ctx) {
                 y1: y,
                 x2: canvas.width,
                 y2: y,
-                strokeStyle: '333',
+                strokeStyle: '#333',
                 lineWidth: 2            
             });
 

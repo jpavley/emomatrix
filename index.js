@@ -39,27 +39,6 @@ function drawMouseMove(ctx) {
     ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
 }
 
-let fps = 0;
-let times = [];
-let counter = 0;
-
-function drawFrameRate(ctx, timeStamp) {
-
-    while (times.length > 0 && times[0] <= (timeStamp - 1000)) {
-        times.shift(); // throw away first element
-    }
-
-    times.push(timeStamp);
-    counter += 1;
-    if (counter > 10) {
-        fps = times.length;
-        counter = 0;
-    }
-
-    ctx.fillStyle = 'yellow';
-    ctx.font = '14px monospace';
-    ctx.fillText(`FPS: ${fps}`, 830, 575);    
-}
 
 document.body.prepend(canvas);
 const ctx = canvas.getContext('2d');
@@ -105,7 +84,7 @@ function draw(timeStamp) {
     }
 
     if (grafix.buttonBarToggles.showFPS) {
-        drawFrameRate(ctx, timeStamp);
+        grafix.drawFrameRate(ctx, timeStamp);
     }
 
     game.requestID = requestAnimationFrame(draw);

@@ -296,3 +296,29 @@ export function buttonBar() {
     addButtonToBar("Toggle Mouse Coordinates", "showMouseCoordinates", buttonBar);
     addButtonToBar("Toggle FPS", "showFPS", buttonBar);
 }
+
+// frameRate
+
+let fps = 0;
+let times = [];
+let counter = 0; // used to trottle drawing of FPS text to avoid flickering
+
+export function drawFrameRate(ctx, timeStamp) {
+
+    // while there is at least one element in the times array
+    // and the first element is greater than or equal to the (timeStamp less 1000)
+    while (times.length > 0 && times[0] <= (timeStamp - 1000)) {
+        times.shift(); // throw away first element
+    }
+
+    times.push(timeStamp);
+    counter += 1;
+    if (counter > 10) {
+        fps = times.length;
+        counter = 0;
+    }
+
+    ctx.fillStyle = 'yellow';
+    ctx.font = '14px monospace';
+    ctx.fillText(`FPS: ${fps}`, 830, 575);    
+}

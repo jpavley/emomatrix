@@ -103,7 +103,7 @@ export function drawGrid(canvas, ctx) {
     
        // Grid Horizonal
     
-        for (let y = 0; y < 30 * tile.width; y += tile.width) {
+        for (let y = 0; y < 30 * tile.height; y += tile.height) {
 
             drawLine(ctx, {
                 x1: 0,

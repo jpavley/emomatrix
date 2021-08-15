@@ -2,6 +2,7 @@
 // Copyright (c) John Pavley
 
 import * as grafix from './grafix.js';
+import * as emoji from './emoji.js';
 
 // canvas and context
 const canvas = document.createElement('canvas');
@@ -44,10 +45,8 @@ document.body.prepend(canvas);
 const ctx = canvas.getContext('2d');
 
 // emojis
-let catFace = String.fromCodePoint(0x1F431);
-let dogFace = String.fromCodePoint(0x1F436);
-let grinFace = String.fromCodePoint(0x1F600);
-let testText = catFace+grinFace+dogFace;
+let greenEmoji = String.fromCodePoint(emoji.greenEmojiCodepoints[40]);
+let testText = greenEmoji;
 
 // drawing and animation
 const game = {requestID: ''};

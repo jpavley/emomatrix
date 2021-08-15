@@ -1,6 +1,7 @@
 /**
- * Grafix,js
+ * Grafix.js
  * A simple graphics library of utilities for HTML5 Canvas (2D).
+ * Copyright (c) 2021 John Pavley
  */ 
  
 /**

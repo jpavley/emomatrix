@@ -60,7 +60,7 @@ const emojiSprites = {
 };
 
 const emojiProps = {
-    emojiCodepoint: '',
+    codePoint: '',
     x: 0,
     y: 0,
     width: 0,
@@ -74,7 +74,7 @@ function createSprite(canvas) {
     const randomX = canvas.width * Math.random();
     const randomSpeed = Math.floor(Math.random() * 6) + 1;
     emojiSprites.list.push({
-        emojiCodepoint: randomEmojiCodepoint,
+        codePoint: randomEmojiCodepoint,
         x: randomX,
         y: 0,
         width: 0,
@@ -128,7 +128,7 @@ function draw(timeStamp) {
             let removed = emojiSprites.list.splice(index, 1)[0];
         }
         ctx.font = sprite.font;
-        ctx.fillText(String.fromCodePoint(sprite.emojiCodepoint), sprite.x, sprite.y);
+        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y);
     });
 
     game.requestID = requestAnimationFrame(draw);

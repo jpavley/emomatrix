@@ -53,15 +53,29 @@ const game = {requestID: ''};
 // emoji sprites
 
 const sprites = {
-    max: 30,
-    font: '50px',
+    max: 0,
+    width: 0,
+    font: '50px Arial',
     list: []
 };
 
 function initSprites(canvas) {
-    ctx.font = '50px Arial';
-    const spriteMetrix = ctx.measureText(testText);
-    console.log(spriteMetrix);
+
+    ctx.save();
+    ctx.font = sprites.font;
+    const spriteMetric = ctx.measureText(testText);
+    ctx.restore();
+
+
+    const spriteCount = Math.floor(canvas.width/spriteMetric.width);
+    //console.log(spriteCount);
+
+    sprites.max = spriteCount;
+    sprites.width = spriteMetric.width;
+
+    for (let column = 0; column < sprites.max; column += 1) {
+        createSprite(canvas, column);
+    }
 }
 
 const spriteProps = {
@@ -74,15 +88,15 @@ const spriteProps = {
     font: ''
 };
 
-function createSprite(canvas) {
+function createSprite(canvas, column) {
     const randomEmojiIndex = Math.floor(Math.random() * emoji.greenEmojiCodepoints.length)
     const randomEmojiCodepoint = emoji.greenEmojiCodepoints[randomEmojiIndex];
-    const randomX = canvas.width * Math.random();
+    const columnX = column * sprites.width;
     const randomSpeed = Math.floor(Math.random() * 6) + 1;
-    const font = '50px Arial';
+    const font = sprites.font;
     sprites.list.push({
         codePoint: randomEmojiCodepoint,
-        x: randomX,
+        x: columnX,
         y: 0,
         width: 0,
         height: 0,
@@ -112,10 +126,6 @@ function draw(timeStamp) {
         });    
     }
 
-    // ctx.fillStyle = 'white';
-    // ctx.font = '50px';
-    // const textMetrics = ctx.measureText(testText);
-
     if (grafix.buttonBarToggles.showMouseCoordinates) {
         drawMouseMove(ctx);
     }
@@ -124,21 +134,24 @@ function draw(timeStamp) {
         grafix.drawFrameRate(ctx, timeStamp);
     }
 
-    if (sprites.list.length < sprites.max) {
-        createSprite(canvas);
-    }
-
     sprites.list.forEach((sprite, index) => {
         sprite.y += sprite.speed;
 
         if (sprite.y > canvas.height + 50) {
             // remove from screen
             let removed = sprites.list.splice(index, 1)[0];
+            const column = sprite.x / sprites.width;
+            console.log(column);
+            createSprite(canvas, column);
         }
         ctx.save();
         ctx.beginPath();
-        ctx.font = sprite.fontStyle;
+        ctx.font = sprite.font;
         ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y);
+        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 50);
+        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 100);
+        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 150);
+        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 200);
         ctx.restore();
     });
 

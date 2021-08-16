@@ -262,11 +262,11 @@ export function drawTextBox(ctx, canvas, textProps) {
 }
 
 export let buttonBarToggles = {
-    showGrid: true,
-    showCenter: true,
-    showTextBox: true,
-    showMouseCoordinates: true,
-    showFPS: true
+    showGrid: false,
+    showCenter: false,
+    showTextBox: false,
+    showMouseCoordinates: false,
+    showFPS: false
 };
 
 function addButtonToBar(textContent, toggle, buttonBar) {

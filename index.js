@@ -53,19 +53,20 @@ const game = {requestID: ''};
 
 // emoji sprites
 
-const emojiSprites = {
-    max: 300,
-    font: '50px Arial',
+const sprites = {
+    max: 30,
+    font: '50px',
     list: []
 };
 
-const emojiProps = {
+const spriteProps = {
     codePoint: '',
     x: 0,
     y: 0,
     width: 0,
     height: 0,
-    speed: 0
+    speed: 0,
+    font: ''
 };
 
 function createSprite(canvas) {
@@ -73,13 +74,15 @@ function createSprite(canvas) {
     const randomEmojiCodepoint = emoji.greenEmojiCodepoints[randomEmojiIndex];
     const randomX = canvas.width * Math.random();
     const randomSpeed = Math.floor(Math.random() * 6) + 1;
-    emojiSprites.list.push({
+    const font = '50px';
+    sprites.list.push({
         codePoint: randomEmojiCodepoint,
         x: randomX,
         y: 0,
         width: 0,
         height: 0,
-        speed: randomSpeed        
+        speed: randomSpeed, 
+        font: font   
     });
 }
 
@@ -116,18 +119,18 @@ function draw(timeStamp) {
         grafix.drawFrameRate(ctx, timeStamp);
     }
 
-    if (emojiSprites.list.length < emojiSprites.max) {
+    if (sprites.list.length < sprites.max) {
         createSprite(canvas);
     }
 
-    emojiSprites.list.forEach((sprite, index) => {
+    sprites.list.forEach((sprite, index) => {
         sprite.y += sprite.speed;
 
         if (sprite.y > canvas.height + 50) {
             // remove from screen
-            let removed = emojiSprites.list.splice(index, 1)[0];
+            let removed = sprites.list.splice(index, 1)[0];
         }
-        ctx.font = sprite.font;
+        ctx.font = sprite.fontStyle;
         ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y);
     });
 

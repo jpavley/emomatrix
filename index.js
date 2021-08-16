@@ -6,8 +6,8 @@ import * as emoji from './emoji.js';
 
 // canvas and context
 const canvas = document.createElement('canvas');
-canvas.setAttribute('width', 30 * grafix.tile.width);
-canvas.setAttribute('height', 30 * grafix.tile.height);
+canvas.setAttribute('width', innerWidth);
+canvas.setAttribute('height', innerHeight);
 canvas.style.backgroundColor = 'black';
 
 // locations

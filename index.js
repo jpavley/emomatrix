@@ -8,7 +8,7 @@ import * as emoji from './emoji.js';
 const canvas = document.createElement('canvas');
 canvas.setAttribute('width', innerWidth);
 canvas.setAttribute('height', innerHeight);
-canvas.style.backgroundColor = 'black';
+canvas.style.backgroundColor = '#003300';
 
 // locations
 let centerX = canvas.width / 2;
@@ -67,10 +67,10 @@ function initSprites(canvas) {
     ctx.restore();
 
 
-    const spriteCount = Math.floor(canvas.width/spriteMetric.width);
+    const columnCount = Math.floor(canvas.width/spriteMetric.width);
     //console.log(spriteCount);
 
-    sprites.max = spriteCount;
+    sprites.max = columnCount;
     sprites.width = spriteMetric.width;
 
     for (let column = 0; column < sprites.max; column += 1) {
@@ -78,28 +78,39 @@ function initSprites(canvas) {
     }
 }
 
-const spriteProps = {
-    codePoint: '',
+const columnProps = {
+    codePoints: [],
     x: 0,
     y: 0,
+    offset: 0,
     width: 0,
-    height: 0,
     speed: 0,
     font: ''
 };
 
-function createSprite(canvas, column) {
+function getRandomEmojiCodePoint() {
     const randomEmojiIndex = Math.floor(Math.random() * emoji.greenEmojiCodepoints.length)
     const randomEmojiCodepoint = emoji.greenEmojiCodepoints[randomEmojiIndex];
+    return randomEmojiCodepoint;
+}
+
+function createSprite(canvas, column) {
     const columnX = column * sprites.width;
-    const randomSpeed = Math.floor(Math.random() * 6) + 1;
+    const randomSpeed = Math.floor(Math.random() * 3) + 1;
+    const randomCount = Math.floor(Math.random() * 9) + 6;
     const font = sprites.font;
+
+    const randomCodePoints = [];
+    for (let i = 0; i < randomCount; i += 1) {
+        randomCodePoints.push(getRandomEmojiCodePoint());
+    }
+
     sprites.list.push({
-        codePoint: randomEmojiCodepoint,
+        codePoints: randomCodePoints,
         x: columnX,
         y: 0,
+        offset: sprites.width,
         width: 0,
-        height: 0,
         speed: randomSpeed, 
         font: font   
     });
@@ -137,21 +148,25 @@ function draw(timeStamp) {
     sprites.list.forEach((sprite, index) => {
         sprite.y += sprite.speed;
 
-        if (sprite.y > canvas.height + 50) {
+        if (sprite.y > canvas.height + (sprite.codePoints.length * sprite.offset)) {
             // remove from screen
             let removed = sprites.list.splice(index, 1)[0];
             const column = sprite.x / sprites.width;
-            console.log(column);
             createSprite(canvas, column);
         }
         ctx.save();
         ctx.beginPath();
         ctx.font = sprite.font;
-        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y);
-        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 50);
-        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 100);
-        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 150);
-        ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y - 200);
+        sprite.codePoints.forEach((codePoint, index) => {
+            const randomNumber = Math.floor(Math.random() * 1000) + 1;
+            if (randomNumber < 998) {
+                ctx.fillText(String.fromCodePoint(codePoint), sprite.x, sprite.y - (index * sprite.offset));
+            } else {
+                const newCodePoint = getRandomEmojiCodePoint();
+                ctx.fillText(String.fromCodePoint(newCodePoint), sprite.x, sprite.y - (index * sprite.offset));
+                sprite.codePoints[index] = newCodePoint;
+            }
+        });
         ctx.restore();
     });
 

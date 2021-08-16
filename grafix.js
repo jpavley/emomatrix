@@ -5,12 +5,6 @@
  */ 
  
 /**
- * The tile defined the width and height of the canvas using
- * a ratio of 3/2.
- */
-export const tile = { width: 30, height: 20 };
-
-/**
  * The basic properties required to draw a line.
  * Includes geometry and style.
  * - x1, y1: start point
@@ -82,7 +76,7 @@ export function drawGrid(canvas, ctx) {
 
         // Grid Vertical
 
-        for (let x = 0; x < 30 * tile.width; x += tile.width) {
+        for (let x = 0; x < canvas.width; x += 30) {
 
             drawLine(ctx, {
                 x1: x,
@@ -104,7 +98,7 @@ export function drawGrid(canvas, ctx) {
     
        // Grid Horizonal
     
-        for (let y = 0; y < 30 * tile.height; y += tile.height) {
+        for (let y = 0; y < canvas.height; y += 30) {
 
             drawLine(ctx, {
                 x1: 0,

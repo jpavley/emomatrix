@@ -136,5 +136,5 @@ function draw(timeStamp) {
 
 // start/init
 
-grafix.buttonBar();
+//grafix.buttonBar();
 game.requestID = requestAnimationFrame(draw);

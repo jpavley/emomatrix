@@ -51,6 +51,38 @@ let testText = greenEmoji;
 // drawing and animation
 const game = {requestID: ''};
 
+// emoji sprites
+
+const emojiSprites = {
+    max: 300,
+    font: '50px Arial',
+    list: []
+};
+
+const emojiProps = {
+    emojiCodepoint: '',
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+    speed: 0
+};
+
+function createSprite(canvas) {
+    const randomEmojiIndex = Math.floor(Math.random() * emoji.greenEmojiCodepoints.length)
+    const randomEmojiCodepoint = emoji.greenEmojiCodepoints[randomEmojiIndex];
+    const randomX = canvas.width * Math.random();
+    const randomSpeed = Math.floor(Math.random() * 6) + 1;
+    emojiSprites.list.push({
+        emojiCodepoint: randomEmojiCodepoint,
+        x: randomX,
+        y: 0,
+        width: 0,
+        height: 0,
+        speed: randomSpeed        
+    });
+}
+
 function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -76,8 +108,6 @@ function draw(timeStamp) {
     ctx.font = '50px Arial';
     const textMetrics = ctx.measureText(testText);
 
-    ctx.fillText(testText, clickX, clickY);
-
     if (grafix.buttonBarToggles.showMouseCoordinates) {
         drawMouseMove(ctx);
     }
@@ -85,6 +115,21 @@ function draw(timeStamp) {
     if (grafix.buttonBarToggles.showFPS) {
         grafix.drawFrameRate(ctx, timeStamp);
     }
+
+    if (emojiSprites.list.length < emojiSprites.max) {
+        createSprite(canvas);
+    }
+
+    emojiSprites.list.forEach((sprite, index) => {
+        sprite.y += sprite.speed;
+
+        if (sprite.y > canvas.height + 50) {
+            // remove from screen
+            let removed = emojiSprites.list.splice(index, 1)[0];
+        }
+        ctx.font = sprite.font;
+        ctx.fillText(String.fromCodePoint(sprite.emojiCodepoint), sprite.x, sprite.y);
+    });
 
     game.requestID = requestAnimationFrame(draw);
 }

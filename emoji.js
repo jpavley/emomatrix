@@ -27,15 +27,15 @@ export const greenEmojiCodepoints = [
     0x1F49A, // Green Heart
     0x1F384, // Chritmas Tree
     0x1F38B, // Tanabata Tree
-    0x1F67B, // Recycling Symbol
+    //0x1F67B, // Recycling Symbol
     0x1F530, // Japanese Beginner
-    0x2705, // Check Mark Button
-    0x274E, // Cross Mark Button
-    0x2733, // Asterisk Button
-    0x2747, // Sparkle Button
+    //0x2705, // Check Mark Button
+    //0x274E, // Cross Mark Button
+    //0x2733, // Asterisk Button
+    //0x2747, // Sparkle Button
     0x1F22F, // Japanese Reserved Button
-    0x1F7E2, // Green Circle
-    0x1F7E9, // Green Square
+    //0x1F7E2, // Green Circle
+    //0x1F7E9, // Green Square
 
     // Smilies
     0x1F92E, // Face Vomiting
@@ -48,7 +48,7 @@ export const greenEmojiCodepoints = [
     0x1F9EA, // Test Tube
     0x1F9FC, // Soap
     // People
-    0x1F9D1, // Singer
+    //0x1F9D1, // Singer
     0x1F9DA, // Fairy
     0x1F9DF, // Zombie
     // Animals
@@ -59,7 +59,7 @@ export const greenEmojiCodepoints = [
     0x1F40A, // Crocodile
     0x1F422, // Turtle
     0x1F98E, // Lizard
-    0x1F40D, // Snake
+    //0x1F40D, // Snake
     0x1F409, // Dragon
     0x1F996, // T-Rex
     // Bugs
@@ -70,16 +70,16 @@ export const greenEmojiCodepoints = [
     0x1F331, // Seedling
     0x1FAB4, // Potted Plan
     0x1F332, // Evergreen Tree
-    0x1F333, // Deciduous Tree
+    //0x1F333, // Deciduous Tree
     0x1F334, // Palm Tree
     0x1F335, // Cactus
     0x1F33E, // Sheaf of Rice
     0x1F33F, // Herb
-    0x2618, // Shamrock
+    //0x2618, // Shamrock
     0x1F340, // Four Leaf Clover
-    0x1F343, // Leaf Fluttering
+    //0x1F343, // Leaf Fluttering
     // Buildings
-    0x1F5FD, // Statue of Liberty
+    //0x1F5FD, // Statue of Liberty
     // Automobiles
     0x1F69B, // Articulated Truck
     // Boats
@@ -87,7 +87,7 @@ export const greenEmojiCodepoints = [
     // Sports
     0x1F94E, // Softball
     0x1F3BE, // Tennis
-    0x1F6F3, // Flag in Hole
+    //0x1F6F3, // Flag in Hole
     // Games
     0x1FA80, // yo-yo
     0x1F9E9, // Puzzle Piece
@@ -98,12 +98,11 @@ export const greenEmojiCodepoints = [
     0x1F452, // Woman's Hat
     0x1FA96, // Military Helmet
     // Computer and Eletronics
-    0x1F4D4, // Pager
+    //0x1F4D4, // Pager
     0x1F50B, // Battery
     // Money
     0x1F4B4, // Yen Banknote
     0x1F4B5, // Dollar Banknote
     0x1F4B6, // Euro Banknote
     0x1F4B8, // Money with Wings
-
 ];

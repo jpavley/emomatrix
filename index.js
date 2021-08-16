@@ -40,7 +40,6 @@ function drawMouseMove(ctx) {
     ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
 }
 
-
 document.body.prepend(canvas);
 const ctx = canvas.getContext('2d');
 
@@ -59,6 +58,12 @@ const sprites = {
     list: []
 };
 
+function initSprites(canvas) {
+    ctx.font = '50px Arial';
+    const spriteMetrix = ctx.measureText(testText);
+    console.log(spriteMetrix);
+}
+
 const spriteProps = {
     codePoint: '',
     x: 0,
@@ -74,7 +79,7 @@ function createSprite(canvas) {
     const randomEmojiCodepoint = emoji.greenEmojiCodepoints[randomEmojiIndex];
     const randomX = canvas.width * Math.random();
     const randomSpeed = Math.floor(Math.random() * 6) + 1;
-    const font = '50px';
+    const font = '50px Arial';
     sprites.list.push({
         codePoint: randomEmojiCodepoint,
         x: randomX,
@@ -107,9 +112,9 @@ function draw(timeStamp) {
         });    
     }
 
-    ctx.fillStyle = 'white';
-    ctx.font = '50px Arial';
-    const textMetrics = ctx.measureText(testText);
+    // ctx.fillStyle = 'white';
+    // ctx.font = '50px';
+    // const textMetrics = ctx.measureText(testText);
 
     if (grafix.buttonBarToggles.showMouseCoordinates) {
         drawMouseMove(ctx);
@@ -130,8 +135,11 @@ function draw(timeStamp) {
             // remove from screen
             let removed = sprites.list.splice(index, 1)[0];
         }
+        ctx.save();
+        ctx.beginPath();
         ctx.font = sprite.fontStyle;
         ctx.fillText(String.fromCodePoint(sprite.codePoint), sprite.x, sprite.y);
+        ctx.restore();
     });
 
     game.requestID = requestAnimationFrame(draw);
@@ -140,4 +148,5 @@ function draw(timeStamp) {
 // start/init
 
 //grafix.buttonBar();
+initSprites(canvas);
 game.requestID = requestAnimationFrame(draw);

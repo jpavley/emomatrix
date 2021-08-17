@@ -55,7 +55,7 @@ const game = {requestID: ''};
 const sprites = {
     max: 0,
     width: 0,
-    font: '50px Arial',
+    font: '25px Arial',
     list: []
 };
 
@@ -96,8 +96,8 @@ function getRandomEmojiCodePoint() {
 
 function createSprite(canvas, column) {
     const columnX = column * sprites.width;
-    const randomSpeed = Math.floor(Math.random() * 3) + 1;
-    const randomCount = Math.floor(Math.random() * 9) + 6;
+    const randomSpeed = Math.floor(Math.random() * 4) + 3;
+    const randomCount = Math.floor(Math.random() * 20) + 6;
     const font = sprites.font;
 
     const randomCodePoints = [];
@@ -116,8 +116,14 @@ function createSprite(canvas, column) {
     });
 }
 
+let scaleFactor = 0.000001;
+
 function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //ctx.scale(scaleFactor, scaleFactor);
+
+    //console.log(scaleX, scaleY);
+
 
     if (grafix.buttonBarToggles.showGrid) {
         grafix.drawGrid(canvas, ctx);
@@ -133,7 +139,7 @@ function draw(timeStamp) {
             x: clickX,
             y: clickY,
             fillStyle: 'white',
-            font: '50px Arial'    
+            font: '25px Arial'    
         });    
     }
 
@@ -159,8 +165,10 @@ function draw(timeStamp) {
         ctx.font = sprite.font;
         sprite.codePoints.forEach((codePoint, index) => {
 
+            ctx.globalAlpha = 1.0 - (index * 0.06);
+
             const swapEmojiThreshold = Math.floor(Math.random() * 1000) + 1;
-            if (swapEmojiThreshold < 998) {
+            if (swapEmojiThreshold < 999) {
                 ctx.fillText(String.fromCodePoint(codePoint), sprite.x, sprite.y - (index * sprite.offset));
             } else {
                 const newCodePoint = getRandomEmojiCodePoint();
@@ -174,8 +182,14 @@ function draw(timeStamp) {
     game.requestID = requestAnimationFrame(draw);
 }
 
-// start/init
+function start() {
+    //grafix.buttonBar();
+    initSprites(canvas);
+    game.requestID = requestAnimationFrame(draw)
+}
 
-//grafix.buttonBar();
-initSprites(canvas);
-game.requestID = requestAnimationFrame(draw);
+function pauseBeforeStart() {
+    const timerID = setTimeout(start,3000);
+}
+
+pauseBeforeStart();

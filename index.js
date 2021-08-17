@@ -158,8 +158,9 @@ function draw(timeStamp) {
         ctx.beginPath();
         ctx.font = sprite.font;
         sprite.codePoints.forEach((codePoint, index) => {
-            const randomNumber = Math.floor(Math.random() * 1000) + 1;
-            if (randomNumber < 998) {
+
+            const swapEmojiThreshold = Math.floor(Math.random() * 1000) + 1;
+            if (swapEmojiThreshold < 998) {
                 ctx.fillText(String.fromCodePoint(codePoint), sprite.x, sprite.y - (index * sprite.offset));
             } else {
                 const newCodePoint = getRandomEmojiCodePoint();

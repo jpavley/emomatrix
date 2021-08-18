@@ -96,7 +96,7 @@ function getRandomEmojiCodePoint() {
 
 function createSprite(canvas, column) {
     const columnX = column * sprites.width;
-    const randomSpeed = Math.floor(Math.random() * 4) + 3;
+    const randomSpeed = Math.floor(Math.random() * 5) + 2;
     const randomCount = Math.floor(Math.random() * 20) + 6;
     const font = sprites.font;
 
@@ -164,6 +164,16 @@ function draw(timeStamp) {
         ctx.beginPath();
         ctx.font = sprite.font;
         sprite.codePoints.forEach((codePoint, index) => {
+
+        ctx.shadowColor = "white"; 
+        ctx.shadowOffsetX = 0; 
+        ctx.shadowOffsetY = 0; 
+
+        if (index == 0) {
+            ctx.shadowBlur = 5;
+        } else {
+            ctx.shadowBlur = 0;
+        }
 
             ctx.globalAlpha = 1.0 - (index * 0.06);
 

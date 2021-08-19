@@ -48,7 +48,10 @@ let greenEmoji = String.fromCodePoint(emoji.greenEmojiCodepoints[40]);
 let testText = greenEmoji;
 
 // drawing and animation
-const game = {requestID: ''};
+const game = {
+    requestID: '',
+    state: 'not started'
+};
 
 // emoji sprites
 
@@ -66,9 +69,7 @@ function initSprites(canvas) {
     const spriteMetric = ctx.measureText(testText);
     ctx.restore();
 
-
     const columnCount = Math.floor(canvas.width/spriteMetric.width);
-    //console.log(spriteCount);
 
     sprites.max = columnCount;
     sprites.width = spriteMetric.width;
@@ -116,14 +117,8 @@ function createSprite(canvas, column) {
     });
 }
 
-let scaleFactor = 0.000001;
-
 function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //ctx.scale(scaleFactor, scaleFactor);
-
-    //console.log(scaleX, scaleY);
-
 
     if (grafix.buttonBarToggles.showGrid) {
         grafix.drawGrid(canvas, ctx);
@@ -163,17 +158,18 @@ function draw(timeStamp) {
         ctx.save();
         ctx.beginPath();
         ctx.font = sprite.font;
+
         sprite.codePoints.forEach((codePoint, index) => {
 
-        ctx.shadowColor = "white"; 
-        ctx.shadowOffsetX = 0; 
-        ctx.shadowOffsetY = 0; 
+            ctx.shadowColor = "white"; 
+            ctx.shadowOffsetX = 0; 
+            ctx.shadowOffsetY = 0; 
 
-        if (index == 0) {
-            ctx.shadowBlur = 5;
-        } else {
-            ctx.shadowBlur = 0;
-        }
+            if (index == 0) {
+                ctx.shadowBlur = 6;
+            } else {
+                ctx.shadowBlur = 0;
+            }
 
             ctx.globalAlpha = 1.0 - (index * 0.06);
 
@@ -193,9 +189,28 @@ function draw(timeStamp) {
 }
 
 function start() {
-    //grafix.buttonBar();
+    canvas.addEventListener('click', (e) => {
+    
+        if (game.state == 'running') {
+            pause();
+        } else if (game.state == 'paused') {
+            unpause();
+        }
+    });
+    
     initSprites(canvas);
+    game.state = 'running'
     game.requestID = requestAnimationFrame(draw)
+}
+
+function pause() {
+    game.state = 'paused';
+    cancelAnimationFrame(game.requestID);
+}
+
+function unpause() {
+    game.state = 'running';
+    game.requestID = requestAnimationFrame(draw);
 }
 
 function pauseBeforeStart() {

@@ -24,6 +24,12 @@ canvas.addEventListener('click', (e) => {
     clickY = e.offsetY;
 });
 
+// window
+
+addEventListener("resize", () => {
+    location.reload(false);
+});
+
 // mouse move
 
 let mouseX = 0;

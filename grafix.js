@@ -317,3 +317,35 @@ export function drawFrameRate(ctx, timeStamp) {
     ctx.font = '14px monospace';
     ctx.fillText(`FPS: ${fps}`, 830, 575);    
 }
+
+export function drawDiagonstics(ctx, timeStamp) {
+    ctx.save();
+
+    if (buttonBarToggles.showGrid) {
+        drawGrid(canvas, ctx);
+    }
+
+    if (buttonBarToggles.showCenter) {
+        drawCenter(canvas, ctx);
+    }
+
+    if (buttonBarToggles.showTextBox) {
+        drawTextBox(ctx, canvas, {
+            message: testText,
+            x: clickX,
+            y: clickY,
+            fillStyle: 'white',
+            font: '25px Arial'    
+        });    
+    }
+
+    if (buttonBarToggles.showMouseCoordinates) {
+        //drawMouseMove(ctx);
+    }
+
+    if (buttonBarToggles.showFPS) {
+        drawFrameRate(ctx, timeStamp);
+    }
+
+    ctx.restore();
+}

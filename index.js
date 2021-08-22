@@ -126,31 +126,7 @@ function createSprite(canvas, column) {
 function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    if (grafix.buttonBarToggles.showGrid) {
-        grafix.drawGrid(canvas, ctx);
-    }
-
-    if (grafix.buttonBarToggles.showCenter) {
-        grafix.drawCenter(canvas, ctx);
-    }
-
-    if (grafix.buttonBarToggles.showTextBox) {
-        grafix.drawTextBox(ctx, canvas, {
-            message: testText,
-            x: clickX,
-            y: clickY,
-            fillStyle: 'white',
-            font: '25px Arial'    
-        });    
-    }
-
-    if (grafix.buttonBarToggles.showMouseCoordinates) {
-        drawMouseMove(ctx);
-    }
-
-    if (grafix.buttonBarToggles.showFPS) {
-        grafix.drawFrameRate(ctx, timeStamp);
-    }
+    grafix.drawDiagonstics(ctx, timeStamp);
 
     sprites.list.forEach((sprite, index) => {
         sprite.y += sprite.speed;

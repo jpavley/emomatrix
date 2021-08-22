@@ -318,6 +318,17 @@ export function drawFrameRate(ctx, timeStamp) {
     ctx.fillText(`FPS: ${fps}`, 830, 575);    
 }
 
+// mouse move
+
+let mouseX = 0;
+let mouseY = 0;
+
+function drawMouseMove(ctx) {
+    ctx.fillStyle = 'yellow';
+    ctx.font = '14px monospace';
+    ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
+}
+
 export function drawDiagonstics(ctx, timeStamp) {
     ctx.save();
 
@@ -340,7 +351,7 @@ export function drawDiagonstics(ctx, timeStamp) {
     }
 
     if (buttonBarToggles.showMouseCoordinates) {
-        //drawMouseMove(ctx);
+        drawMouseMove(ctx);
     }
 
     if (buttonBarToggles.showFPS) {
@@ -348,4 +359,11 @@ export function drawDiagonstics(ctx, timeStamp) {
     }
 
     ctx.restore();
+}
+
+export function initGrafix(canvas) {
+    canvas.addEventListener('mousemove', (e) => {
+        mouseX = e.offsetX;
+        mouseY = e.offsetY;
+    });    
 }

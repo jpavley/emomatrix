@@ -30,22 +30,6 @@ addEventListener("resize", () => {
     location.reload(false);
 });
 
-// mouse move
-
-let mouseX = 0;
-let mouseY = 0;
-
-canvas.addEventListener('mousemove', (e) => {
-    mouseX = e.offsetX;
-    mouseY = e.offsetY;
-});
-
-function drawMouseMove(ctx) {
-    ctx.fillStyle = 'yellow';
-    ctx.font = '14px monospace';
-    ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
-}
-
 document.body.prepend(canvas);
 const ctx = canvas.getContext('2d');
 
@@ -180,6 +164,7 @@ function start() {
         }
     });
     
+    grafix.initGrafix(canvas);
     initSprites(canvas);
     game.state = 'running'
     game.requestID = requestAnimationFrame(draw)

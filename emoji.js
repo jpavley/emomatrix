@@ -27,15 +27,8 @@ export const greenEmojiCodepoints = [
     0x1F49A, // Green Heart
     0x1F384, // Chritmas Tree
     0x1F38B, // Tanabata Tree
-    //0x1F67B, // Recycling Symbol
     0x1F530, // Japanese Beginner
-    //0x2705, // Check Mark Button
-    //0x274E, // Cross Mark Button
-    //0x2733, // Asterisk Button
-    //0x2747, // Sparkle Button
     0x1F22F, // Japanese Reserved Button
-    //0x1F7E2, // Green Circle
-    //0x1F7E9, // Green Square
 
     // Smilies
     0x1F92E, // Face Vomiting
@@ -59,7 +52,7 @@ export const greenEmojiCodepoints = [
     0x1F40A, // Crocodile
     0x1F422, // Turtle
     0x1F98E, // Lizard
-    //0x1F40D, // Snake
+    0x1F40D, // Snake
     0x1F409, // Dragon
     0x1F996, // T-Rex
     // Bugs

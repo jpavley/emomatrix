@@ -276,10 +276,10 @@ export function drawTextBox(ctx, canvas, textProps) {
  * and FPS.
  */
 export let buttonBarToggles = {
-    showGrid: false,
-    showCenter: false,
-    showTextBox: false,
-    showMouseCoordinates: false,
+    showGrid: true,
+    showCenter: true,
+    showTextBox: true,
+    showMouseCoordinates: true,
     showFPS: true
 };
 
@@ -351,17 +351,31 @@ export function drawFrameRate(canvas, ctx, timeStamp, frameRateProps) {
     ctx.fillText(`FPS: ${frameRateProps.fps}`, canvas.width - 100, canvas.height - 30);    
 }
 
-// mouse move
-
-let mouseX = 0;
-let mouseY = 0;
-
-function drawMouseMove(ctx) {
-    ctx.fillStyle = 'yellow';
-    ctx.font = '14px monospace';
-    ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
+/**
+ * Mouse movement properties.
+ */
+export const mouseProps = {
+    mouseX: 0,
+    mouseY: 0
 }
 
+/**
+ * Displays the current mouse coordinates.
+ * @param {HTMLCanvasElement} canvas 
+ * @param {CanvasRenderingContext2D} ctx 
+ */
+function drawMouseMove(canvas, ctx) {
+    ctx.fillStyle = 'yellow';
+    ctx.font = '14px monospace';
+    ctx.fillText(`${mouseProps.mouseX},${mouseProps.mouseY}`, 35, canvas.height - 30);
+}
+
+/**
+ * Draws the diagonstic objects on the canvas.
+ * @param {HTMLCanvasElement} canvas 
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {number} timeStamp 
+ */
 export function drawDiagonstics(canvas, ctx, timeStamp) {
     ctx.save();
 
@@ -373,18 +387,21 @@ export function drawDiagonstics(canvas, ctx, timeStamp) {
         drawCenter(canvas, ctx);
     }
 
-    if (buttonBarToggles.showTextBox) {
-        drawTextBox(ctx, canvas, {
-            message: testText,
-            x: clickX,
-            y: clickY,
-            fillStyle: 'white',
-            font: '25px Arial'    
-        });    
-    }
+    // TODO: Need a complately different way to integrate
+    //       Need to add this as a property a text sprite
+
+    // if (buttonBarToggles.showTextBox) {
+    //     drawTextBox(ctx, canvas, {
+    //         message: testText,
+    //         x: clickX,
+    //         y: clickY,
+    //         fillStyle: 'white',
+    //         font: '25px Arial'    
+    //     });    
+    // }
 
     if (buttonBarToggles.showMouseCoordinates) {
-        drawMouseMove(ctx);
+        drawMouseMove(canvas, ctx);
     }
 
     if (buttonBarToggles.showFPS) {
@@ -394,9 +411,13 @@ export function drawDiagonstics(canvas, ctx, timeStamp) {
     ctx.restore();
 }
 
+/**
+ * Initalizes grafix libary properties and listeners.
+ * @param {HTMLCanvasElement} canvas 
+ */
 export function initGrafix(canvas) {
     canvas.addEventListener('mousemove', (e) => {
-        mouseX = e.offsetX;
-        mouseY = e.offsetY;
+        mouseProps.mouseX = e.offsetX;
+        mouseProps.mouseY = e.offsetY;
     });    
 }

@@ -151,6 +151,9 @@ export function drawCenter(canvas, ctx) {
     });
 }
 
+/**\
+ * Computed properties of a text element.
+ */
 export const textBox = {
     textTop: 0,
     textBottom: 0,
@@ -163,6 +166,12 @@ export const textBox = {
     textVerticalCenter: 0
 };
 
+/**
+ * Measures text and return its textBox properties
+ * @param CanvasRenderingContext2D} ctx 
+ * @param {textProps} textProps 
+ * @returns {textBox} textBox
+ */
 export function getTextBox(ctx, textProps) {
     const textMetrics = ctx.measureText(textProps.message);
 
@@ -261,14 +270,25 @@ export function drawTextBox(ctx, canvas, textProps) {
     });
 }
 
+/**
+ * Properties that control visibility of diagnostic
+ * tools: grid, reticle, text bounds, mouse coorindates
+ * and FPS.
+ */
 export let buttonBarToggles = {
     showGrid: false,
     showCenter: false,
     showTextBox: false,
     showMouseCoordinates: false,
-    showFPS: false
+    showFPS: true
 };
 
+/**
+ * Appends a button to button bar.
+ * @param {String} textContent 
+ * @param {Boolean} toggle 
+ * @param {buttonBar} buttonBar 
+ */
 function addButtonToBar(textContent, toggle, buttonBar) {
     const newButton = document.createElement('button');
     newButton.textContent = textContent;
@@ -280,6 +300,9 @@ function addButtonToBar(textContent, toggle, buttonBar) {
     buttonBar.append(newButton);
 }
 
+/**
+ * Creates a div element to contain buttons.
+ */
 export function buttonBar() {
     const buttonBar = document.createElement('div');
     buttonBar.style.display = 'block';
@@ -292,30 +315,40 @@ export function buttonBar() {
     addButtonToBar("Toggle FPS", "showFPS", buttonBar);
 }
 
-// frameRate
+/**
+ * Properties used to calcuate and display frames per second.
+ */
+export const frameRateProps = {
+    fps: 0,
+    times: [],
+    counter: 0 // used to trottle drawing of FPS text to avoid flickering
+};
 
-let fps = 0;
-let times = [];
-let counter = 0; // used to trottle drawing of FPS text to avoid flickering
-
-export function drawFrameRate(ctx, timeStamp) {
+/**
+ * Calcuates and displays frames per second.
+ * @param {HTMLCanvasElement} canvas 
+ * @param {CanvasRenderingContext2D} ctx 
+ * @param {number} timeStamp 
+ * @param {frameRateProps} frameRateProps 
+ */
+export function drawFrameRate(canvas, ctx, timeStamp, frameRateProps) {
 
     // while there is at least one element in the times array
     // and the first element is greater than or equal to the (timeStamp less 1000)
-    while (times.length > 0 && times[0] <= (timeStamp - 1000)) {
-        times.shift(); // throw away first element
+    while (frameRateProps.times.length > 0 && frameRateProps.times[0] <= (timeStamp - 1000)) {
+        frameRateProps.times.shift(); // throw away first element
     }
 
-    times.push(timeStamp);
-    counter += 1;
-    if (counter > 10) {
-        fps = times.length;
-        counter = 0;
+    frameRateProps.times.push(timeStamp);
+    frameRateProps.counter += 1;
+    if (frameRateProps.counter > 10) {
+        frameRateProps.fps = frameRateProps.times.length;
+        frameRateProps.counter = 0;
     }
 
     ctx.fillStyle = 'yellow';
     ctx.font = '14px monospace';
-    ctx.fillText(`FPS: ${fps}`, 830, 575);    
+    ctx.fillText(`FPS: ${frameRateProps.fps}`, canvas.width - 100, canvas.height - 30);    
 }
 
 // mouse move
@@ -329,7 +362,7 @@ function drawMouseMove(ctx) {
     ctx.fillText(`${mouseX},${mouseY}`, 35, 575);
 }
 
-export function drawDiagonstics(ctx, timeStamp) {
+export function drawDiagonstics(canvas, ctx, timeStamp) {
     ctx.save();
 
     if (buttonBarToggles.showGrid) {
@@ -355,7 +388,7 @@ export function drawDiagonstics(ctx, timeStamp) {
     }
 
     if (buttonBarToggles.showFPS) {
-        drawFrameRate(ctx, timeStamp);
+        drawFrameRate(canvas, ctx, timeStamp, frameRateProps);
     }
 
     ctx.restore();

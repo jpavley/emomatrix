@@ -110,7 +110,7 @@ function createSprite(canvas, column) {
 function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    grafix.drawDiagonstics(ctx, timeStamp);
+    grafix.drawDiagonstics(canvas, ctx, timeStamp);
 
     sprites.list.forEach((sprite, index) => {
         sprite.y += sprite.speed;

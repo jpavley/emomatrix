@@ -164,7 +164,13 @@ function start() {
         }
     });
     
-    grafix.initGrafix(canvas);
+    grafix.initGrafix(canvas, {
+        showGrid: false,
+        showCenter: false,
+        showTextBox: false,
+        showMouseCoordinates: false,
+        showFPS: false
+    });
     initSprites(canvas);
     game.state = 'running'
     game.requestID = requestAnimationFrame(draw)

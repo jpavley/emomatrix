@@ -414,8 +414,16 @@ export function drawDiagonstics(canvas, ctx, timeStamp) {
 /**
  * Initalizes grafix libary properties and listeners.
  * @param {HTMLCanvasElement} canvas 
+ * @param {buttonBarToggles} bbt
  */
-export function initGrafix(canvas) {
+export function initGrafix(canvas, bbt) {
+
+    buttonBarToggles.showCenter = bbt.showCenter;
+    buttonBarToggles.showFPS = bbt.showFPS;
+    buttonBarToggles.showGrid = bbt.showGrid;
+    buttonBarToggles.showMouseCoordinates = bbt.showMouseCoordinates;
+    buttonBarToggles.showTextBox = bbt.showTextBox;
+
     canvas.addEventListener('mousemove', (e) => {
         mouseProps.mouseX = e.offsetX;
         mouseProps.mouseY = e.offsetY;

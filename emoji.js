@@ -6,6 +6,11 @@
 export const fullEmojiList = "https://unicode.org/emoji/charts/full-emoji-list.html#1f9d1_200d_1f3a4";
 
 export const greenEmojiCodepoints = [
+    // Smilies
+    0x1F92E, // Face Vomiting
+    0x1F922, // Nauseated Face
+    0x1F911, // Money Mouth Face
+    
     // Fruit and Veggies
     0x1F34F, // Green Apple
     0x1F966, // Broccoli
@@ -29,11 +34,6 @@ export const greenEmojiCodepoints = [
     0x1F38B, // Tanabata Tree
     0x1F530, // Japanese Beginner
     0x1F22F, // Japanese Reserved Button
-
-    // Smilies
-    0x1F92E, // Face Vomiting
-    0x1F922, // Nauseated Face
-    0x1F911, // Money Mouth Face
     // Things
     0x1F4D7, // Green Book
     0x1F52B, // Water Pistol
@@ -41,7 +41,6 @@ export const greenEmojiCodepoints = [
     0x1F9EA, // Test Tube
     0x1F9FC, // Soap
     // People
-    //0x1F9D1, // Singer
     0x1F9DA, // Fairy
     0x1F9DF, // Zombie
     // Animals
@@ -63,16 +62,11 @@ export const greenEmojiCodepoints = [
     0x1F331, // Seedling
     0x1FAB4, // Potted Plan
     0x1F332, // Evergreen Tree
-    //0x1F333, // Deciduous Tree
     0x1F334, // Palm Tree
     0x1F335, // Cactus
     0x1F33E, // Sheaf of Rice
     0x1F33F, // Herb
-    //0x2618, // Shamrock
     0x1F340, // Four Leaf Clover
-    //0x1F343, // Leaf Fluttering
-    // Buildings
-    //0x1F5FD, // Statue of Liberty
     // Automobiles
     0x1F69B, // Articulated Truck
     // Boats
@@ -80,7 +74,6 @@ export const greenEmojiCodepoints = [
     // Sports
     0x1F94E, // Softball
     0x1F3BE, // Tennis
-    //0x1F6F3, // Flag in Hole
     // Games
     0x1FA80, // yo-yo
     0x1F9E9, // Puzzle Piece
@@ -91,11 +84,69 @@ export const greenEmojiCodepoints = [
     0x1F452, // Woman's Hat
     0x1FA96, // Military Helmet
     // Computer and Eletronics
-    //0x1F4D4, // Pager
     0x1F50B, // Battery
     // Money
     0x1F4B4, // Yen Banknote
     0x1F4B5, // Dollar Banknote
     0x1F4B6, // Euro Banknote
     0x1F4B8, // Money with Wings
+];
+
+export const emojiProps = {
+    codePoint: 0x0000,
+    category: '',
+    description: '',
+    color: ''
+};
+
+export const emojiTable = [
+
+    {codePoint: 0x1F92E, category: 'a', description: 'vomiting',    color: 'green'},
+    {codePoint: 0x1F922, category: 'a', description: 'nauseated',   color: 'green'},
+    {codePoint: 0x1F911, category: 'a', description: 'money Mouth', color: 'green'},
+
+    {codePoint: 0x1F975, category: 'a', description: 'hot',          color: 'red'},
+    {codePoint: 0x1F621, category: 'a', description: 'pouting',      color: 'red'},
+    {codePoint: 0x1F92C, category: 'a', description: 'symbol mouth', color: 'red'},
+
+    {codePoint: 0x1F976, category: 'a', description: 'cold',         color: 'blue'},
+    {codePoint: 0x1F630, category: 'a', description: 'anxious',      color: 'blue'},
+    {codePoint: 0x1F631, category: 'a', description: 'screaming',    color: 'blue'},
+
+    {codePoint: 0x1F600, category: 'a', description: 'grinning',     color: 'yellow'},
+    {codePoint: 0x1F929, category: 'a', description: 'star struck',  color: 'yellow'},
+    {codePoint: 0x1F61b, category: 'a', description: 'tongue',       color: 'yellow'},
+
+    {codePoint: 0x1F34F, category: 'b', description: 'green apple', color: 'green'},
+    {codePoint: 0x1F966, category: 'b', description: 'broccoli',    color: 'green'},
+    {codePoint: 0x1F952, category: 'b', description: 'cucumber',    color: 'green'},
+    {codePoint: 0x1F951, category: 'b', description: 'avocado',     color: 'green'},
+    {codePoint: 0x1F95D, category: 'b', description: 'kiwi',        color: 'green'},
+    {codePoint: 0x1F350, category: 'b', description: 'pear',        color: 'green'},
+    {codePoint: 0x1FAD2, category: 'b', description: 'olive',        color: 'green'},
+
+    {codePoint: 0x1F349, category: 'b', description: 'watermelon', color: 'red'},
+    {codePoint: 0x1F34E, category: 'b', description: 'red apple',  color: 'red'},
+    {codePoint: 0x1F352, category: 'b', description: 'cherries',   color: 'red'},
+    {codePoint: 0x1F353, category: 'b', description: 'strawberry', color: 'red'},
+    {codePoint: 0x1F345, category: 'b', description: 'tomato',     color: 'red'},
+    {codePoint: 0x1F336, category: 'b', description: 'hot pepper', color: 'red'},
+    {codePoint: 0x1F344, category: 'b', description: 'mushroom',   color: 'red'},
+
+    {codePoint: 0x1F347, category: 'b', description: 'grapes',      color: 'blue'},
+    {codePoint: 0x1FAD0, category: 'b', description: 'blueberries', color: 'blue'},
+    {codePoint: 0x1F346, category: 'b', description: 'eggplant',    color: 'blue'},
+    {codePoint: 0x1F9CA, category: 'b', description: 'ice',         color: 'blue'},
+    {codePoint: 0x1F30D, category: 'b', description: 'earth',       color: 'blue'},
+    {codePoint: 0x1F310, category: 'b', description: 'globe',       color: 'blue'},
+    {codePoint: 0x1F5FA, category: 'b', description: 'map',         color: 'blue'},
+
+    {codePoint: 0x1F34B, category: 'b', description: 'lemon',    color: 'yellow'},
+    {codePoint: 0x1F34C, category: 'b', description: 'banana',   color: 'yellow'},
+    {codePoint: 0x1F33D, category: 'b', description: 'corn',     color: 'yellow'},
+    {codePoint: 0x1F9C0, category: 'b', description: 'cheese',   color: 'yellow'},
+    {codePoint: 0x1F32E, category: 'b', description: 'taco',     color: 'yellow'},
+    {codePoint: 0x1F9C8, category: 'b', description: 'butter',   color: 'yellow'},
+    {codePoint: 0x1F95F, category: 'b', description: 'dumpling', color: 'yellow'},
+
 ];

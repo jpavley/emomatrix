@@ -149,4 +149,23 @@ export const emojiTable = [
     {codePoint: 0x1F9C8, category: 'b', description: 'butter',   color: 'yellow'},
     {codePoint: 0x1F95F, category: 'b', description: 'dumpling', color: 'yellow'},
 
+    {codePoint: 0x1F49A, category: 'c', description: 'green heart', color: 'green'},
+    {codePoint: 0x1F384, category: 'c', description: 'chritmas tree', color: 'green'},
+    {codePoint: 0x1F38B, category: 'c', description: 'tanabata tree', color: 'green'},
+    {codePoint: 0x1F530, category: 'c', description: 'japanese beginner', color: 'green'},
+    {codePoint: 0x1F22F, category: 'c', description: 'japanese reserved button', color: 'green'},
+
+    {codePoint: 0x1F494, category: 'c', description: 'broken heart', color: 'red'},
+    {codePoint: 0x1F4AF, category: 'c', description: '100', color: 'red'},
+    {codePoint: 0x1F339, category: 'c', description: 'rose', color: 'red'},
+    {codePoint: 0x1F33A, category: 'c', description: 'hibiscus', color: 'red'},
+    {codePoint: 0x1F35F, category: 'c', description: 'french fries', color: 'red'},
+
+    {codePoint: 0x1F499, category: 'c', description: 'blue heart', color: 'blue'},
+    {codePoint: 0x1F4A6, category: 'c', description: 'sweat',      color: 'blue'},
+    {codePoint: 0x1F4A4, category: 'c', description: 'zzz',        color: 'blue'},
+    {codePoint: 0x26F2, category:  'c', description: 'fountain',   color: 'blue'},
+    {codePoint: 0x1F694, category: 'c', description: 'police car', color: 'blue'},
+
+
 ];

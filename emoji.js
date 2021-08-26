@@ -101,6 +101,8 @@ export const emojiProps = {
 
 export const emojiTable = [
 
+    // A (mostly faces)
+
     {codePoint: 0x1F92E, category: 'a', description: 'vomiting',    color: 'green'},
     {codePoint: 0x1F922, category: 'a', description: 'nauseated',   color: 'green'},
     {codePoint: 0x1F911, category: 'a', description: 'money Mouth', color: 'green'},
@@ -116,6 +118,8 @@ export const emojiTable = [
     {codePoint: 0x1F600, category: 'a', description: 'grinning',     color: 'yellow'},
     {codePoint: 0x1F929, category: 'a', description: 'star struck',  color: 'yellow'},
     {codePoint: 0x1F61b, category: 'a', description: 'tongue',       color: 'yellow'},
+
+    // B (mostly food)
 
     {codePoint: 0x1F34F, category: 'b', description: 'green apple', color: 'green'},
     {codePoint: 0x1F966, category: 'b', description: 'broccoli',    color: 'green'},
@@ -149,6 +153,8 @@ export const emojiTable = [
     {codePoint: 0x1F9C8, category: 'b', description: 'butter',   color: 'yellow'},
     {codePoint: 0x1F95F, category: 'b', description: 'dumpling', color: 'yellow'},
 
+    // C (mostly symbols)
+
     {codePoint: 0x1F49A, category: 'c', description: 'green heart', color: 'green'},
     {codePoint: 0x1F384, category: 'c', description: 'chritmas tree', color: 'green'},
     {codePoint: 0x1F38B, category: 'c', description: 'tanabata tree', color: 'green'},
@@ -159,7 +165,7 @@ export const emojiTable = [
     {codePoint: 0x1F4AF, category: 'c', description: '100', color: 'red'},
     {codePoint: 0x1F339, category: 'c', description: 'rose', color: 'red'},
     {codePoint: 0x1F33A, category: 'c', description: 'hibiscus', color: 'red'},
-    {codePoint: 0x1F35F, category: 'c', description: 'french fries', color: 'red'},
+    {codePoint: 0x1F35F, category: 'c', description: 'french friesg', color: 'red'},
 
     {codePoint: 0x1F499, category: 'c', description: 'blue heart', color: 'blue'},
     {codePoint: 0x1F4A6, category: 'c', description: 'sweat',      color: 'blue'},
@@ -167,5 +173,10 @@ export const emojiTable = [
     {codePoint: 0x26F2, category:  'c', description: 'fountain',   color: 'blue'},
     {codePoint: 0x1F694, category: 'c', description: 'police car', color: 'blue'},
 
+    {codePoint: 0x1F49B, category: 'c', description: 'yellow heart',  color: 'yellow'},
+    {codePoint: 0x1F596, category: 'c', description: 'vulcan salute', color: 'yellow'},
+    {codePoint: 0x1F33B, category: 'c', description: 'sunflower',     color: 'yellow'},
+    {codePoint: 0x1F37A, category: 'c', description: 'beer mug',   color: 'yellow'},
+    {codePoint: 0x1F3FA, category: 'c', description: 'amphora', color: 'yellow'},
 
 ];

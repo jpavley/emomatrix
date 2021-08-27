@@ -127,7 +127,7 @@ export const emojiTable = [
     {codePoint: 0x1F951, category: 'b', description: 'avocado',     color: 'green'},
     {codePoint: 0x1F95D, category: 'b', description: 'kiwi',        color: 'green'},
     {codePoint: 0x1F350, category: 'b', description: 'pear',        color: 'green'},
-    {codePoint: 0x1FAD2, category: 'b', description: 'olive',        color: 'green'},
+    {codePoint: 0x1FAD2, category: 'b', description: 'olive',       color: 'green'},
 
     {codePoint: 0x1F349, category: 'b', description: 'watermelon', color: 'red'},
     {codePoint: 0x1F34E, category: 'b', description: 'red apple',  color: 'red'},
@@ -155,16 +155,16 @@ export const emojiTable = [
 
     // C (mostly symbols)
 
-    {codePoint: 0x1F49A, category: 'c', description: 'green heart', color: 'green'},
-    {codePoint: 0x1F384, category: 'c', description: 'chritmas tree', color: 'green'},
-    {codePoint: 0x1F38B, category: 'c', description: 'tanabata tree', color: 'green'},
-    {codePoint: 0x1F530, category: 'c', description: 'japanese beginner', color: 'green'},
-    {codePoint: 0x1F22F, category: 'c', description: 'japanese reserved button', color: 'green'},
+    {codePoint: 0x1F49A, category: 'c', description: 'green heart',     color: 'green'},
+    {codePoint: 0x1F384, category: 'c', description: 'chritmas tree',   color: 'green'},
+    {codePoint: 0x1F38B, category: 'c', description: 'tanabata tree',   color: 'green'},
+    {codePoint: 0x1F530, category: 'c', description: 'beginner',        color: 'green'},
+    {codePoint: 0x1F22F, category: 'c', description: 'reserved button', color: 'green'},
 
     {codePoint: 0x1F494, category: 'c', description: 'broken heart', color: 'red'},
-    {codePoint: 0x1F4AF, category: 'c', description: '100', color: 'red'},
-    {codePoint: 0x1F339, category: 'c', description: 'rose', color: 'red'},
-    {codePoint: 0x1F33A, category: 'c', description: 'hibiscus', color: 'red'},
+    {codePoint: 0x1F4AF, category: 'c', description: '100',          color: 'red'},
+    {codePoint: 0x1F339, category: 'c', description: 'rose',         color: 'red'},
+    {codePoint: 0x1F33A, category: 'c', description: 'hibiscus',     color: 'red'},
     {codePoint: 0x1F35F, category: 'c', description: 'french fries', color: 'red'},
 
     {codePoint: 0x1F499, category: 'c', description: 'blue heart', color: 'blue'},

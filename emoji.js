@@ -165,7 +165,7 @@ export const emojiTable = [
     {codePoint: 0x1F4AF, category: 'c', description: '100', color: 'red'},
     {codePoint: 0x1F339, category: 'c', description: 'rose', color: 'red'},
     {codePoint: 0x1F33A, category: 'c', description: 'hibiscus', color: 'red'},
-    {codePoint: 0x1F35F, category: 'c', description: 'french friesg', color: 'red'},
+    {codePoint: 0x1F35F, category: 'c', description: 'french fries', color: 'red'},
 
     {codePoint: 0x1F499, category: 'c', description: 'blue heart', color: 'blue'},
     {codePoint: 0x1F4A6, category: 'c', description: 'sweat',      color: 'blue'},
@@ -176,7 +176,33 @@ export const emojiTable = [
     {codePoint: 0x1F49B, category: 'c', description: 'yellow heart',  color: 'yellow'},
     {codePoint: 0x1F596, category: 'c', description: 'vulcan salute', color: 'yellow'},
     {codePoint: 0x1F33B, category: 'c', description: 'sunflower',     color: 'yellow'},
-    {codePoint: 0x1F37A, category: 'c', description: 'beer mug',   color: 'yellow'},
-    {codePoint: 0x1F3FA, category: 'c', description: 'amphora', color: 'yellow'},
+    {codePoint: 0x1F37A, category: 'c', description: 'beer mug',      color: 'yellow'},
+    {codePoint: 0x1F3FA, category: 'c', description: 'amphora',       color: 'yellow'},
+
+    // D (mostly things)
+
+    {codePoint: 0x1F4D7, category: 'd', description: 'green book',   color: 'green'},
+    {codePoint: 0x1F52B, category: 'd', description: 'water pistol', color: 'green'},
+    {codePoint: 0x1FA9B, category: 'd', description: 'screwdriver',  color: 'green'},
+    {codePoint: 0x1F9EA, category: 'd', description: 'test tube',    color: 'green'},
+    {codePoint: 0x1F9FC, category: 'd', description: 'soap',         color: 'green'},
+
+    {codePoint: 0x1FD4F, category: 'd', description: 'closed book',   color: 'red'},
+    {codePoint: 0x260E,  category: 'd', description: 'telephone',     color: 'red'},
+    {codePoint: 0x1F3FF, category: 'd', description: 'paper lantern', color: 'red'},
+    {codePoint: 0x1F58D, category: 'd', description: 'crayon',        color: 'red'},
+    {codePoint: 0x1F4CF, category: 'd', description: 'pushpin',       color: 'red'},
+
+    {codePoint: 0x1F4D8, category: 'd', description: 'blue book',    color: 'blue'},
+    {codePoint: 0x1F48E, category: 'd', description: 'gem stone',    color: 'blue'},
+    {codePoint: 0x1F9E2, category: 'd', description: 'billed cap',   color: 'blue'},
+    {codePoint: 0x1F9FF, category: 'd', description: 'nazar amulet', color: 'blue'},
+    {codePoint: 0x1F48D, category: 'd', description: 'ring',         color: 'blue'},
+
+    {codePoint: 0x1F4D2, category: 'd', description: 'ledger',     color: 'yellow'},
+    {codePoint: 0x1F4A1, category: 'd', description: 'light bulb', color: 'yellow'},
+    {codePoint: 0x1F514, category: 'd', description: 'bell',       color: 'yellow'},
+    {codePoint: 0x1F4B0, category: 'd', description: 'money bag',  color: 'yellow'},
+    {codePoint: 0x270F,  category: 'd', description: 'pencil',     color: 'yellow'},
 
 ];

@@ -205,4 +205,40 @@ export const emojiTable = [
     {codePoint: 0x1F4B0, category: 'd', description: 'money bag',  color: 'yellow'},
     {codePoint: 0x270F,  category: 'd', description: 'pencil',     color: 'yellow'},
 
+    // E (mostly people)
+
+    {codePoint: 0x1F9DF, category: 'e', description: 'zombie',  color: 'green'},
+
+    {codePoint: 0x1F483, category: 'e', description: 'dancing', color: 'red'},
+
+    {codePoint: 0x1F46E, category: 'e', description: 'officer', color: 'blue'},
+
+    {codePoint: 0x1F477, category: 'e', description: ' worker', color: 'yellow'},
+
+    // F (mostly animals)
+
+    {codePoint: 0x1F99A, category: 'f', description: 'peacock',   color: 'green'},
+    {codePoint: 0x1F438, category: 'f', description: 'frog',      color: 'green'},
+    {codePoint: 0x1F40A, category: 'f', description: 'crocodile', color: 'green'},
+    {codePoint: 0x1F422, category: 'f', description: 'turtle',    color: 'green'},
+    {codePoint: 0x1F98E, category: 'f', description: 'lizard',    color: 'green'},
+    {codePoint: 0x1F40D, category: 'f', description: 'snake',     color: 'green'},
+    {codePoint: 0x1F409, category: 'f', description: 'dragon',    color: 'green'},
+
+    {codePoint: 0x1F437, category: 'f', description: 'pig face',    color: 'red'},
+    {codePoint: 0x1F43D, category: 'f', description: 'pig nose',    color: 'red'},
+    {codePoint: 0x1F9A9, category: 'f', description: 'flamingo',    color: 'red'},
+    {codePoint: 0x1F419, category: 'f', description: 'octopus',     color: 'red'},
+    {codePoint: 0x1F41E, category: 'f', description: 'lady beetle', color: 'red'},
+    {codePoint: 0x1F444, category: 'f', description: 'mouth',       color: 'red'},
+    {codePoint: 0x1F9E0, category: 'f', description: 'brain',       color: 'red'},
+
+    {codePoint: 0x1F433, category: 'f', description: 'spouting whale', color: 'blue'},
+    {codePoint: 0x1F40B, category: 'f', description: 'whale',          color: 'blue'},
+    {codePoint: 0x1F42C, category: 'f', description: 'dolphin',        color: 'blue'},
+    {codePoint: 0x1F41F, category: 'f', description: 'fish',           color: 'blue'},
+    {codePoint: 0x1F9DE, category: 'f', description: 'genie',          color: 'blue'},
+    {codePoint: 0x1F4A7, category: 'f', description: 'droplet',        color: 'blue'},
+
+
 ];

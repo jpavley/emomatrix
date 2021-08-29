@@ -27,7 +27,7 @@ canvas.addEventListener('click', (e) => {
 // window
 
 addEventListener("resize", () => {
-    location.reload(false);
+    location.reload();
 });
 
 document.body.prepend(canvas);

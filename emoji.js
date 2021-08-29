@@ -240,5 +240,39 @@ export const emojiTable = [
     {codePoint: 0x1F9DE, category: 'f', description: 'genie',          color: 'blue'},
     {codePoint: 0x1F4A7, category: 'f', description: 'droplet',        color: 'blue'},
 
+    {codePoint: 0x1F431, category: 'g', description: 'cat face',         color: 'yellow'},
+    {codePoint: 0x1F981, category: 'g', description: 'lion',             color: 'yellow'},
+    {codePoint: 0x1F406, category: 'g', description: 'leopard',          color: 'yellow'},
+    {codePoint: 0x1F424, category: 'g', description: 'baby chick',       color: 'yellow'},
+    {codePoint: 0x1F425, category: 'g', description: 'front baby chick', color: 'yellow'},
+    {codePoint: 0x1F41D, category: 'g', description: 'honeybee',         color: 'yellow'},
+
+
+    // G (plants, clothing)
+
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+
+
+
+
+
 
 ];

@@ -11,7 +11,7 @@ const emoColors = {
     yellow: 'yellow',
     blue: 'blue',
     current: 'green',
-    timing: 6000
+    timing: 12000
 };
 
 const backgroundColors = {
@@ -101,7 +101,6 @@ function getRandomEmojiCodePoint() {
     return randomEmojiCodepoint;
 }
 
-
 function createSprite(canvas, column) {
     const columnX = column * sprites.width;
     const randomSpeed = Math.floor(Math.random() * 5) + 2;
@@ -187,9 +186,10 @@ function cycleEmojiColor() {
     canvas.style.backgroundColor = backgroundColors[emoColors.current];
     emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
 
-
     const timerID = setTimeout(cycleEmojiColor, emoColors.timing);
 }
+
+// start up
 
 function start() {
 
@@ -215,6 +215,8 @@ function start() {
     const timerID = setTimeout(cycleEmojiColor, emoColors.timing);
 }
 
+// click to pause
+
 function pause() {
     game.state = 'paused';
     cancelAnimationFrame(game.requestID);
@@ -225,8 +227,10 @@ function unpause() {
     game.requestID = requestAnimationFrame(draw);
 }
 
-function pauseBeforeStart() {
+function main() {
     const timerID = setTimeout(start,3000);
 }
 
-pauseBeforeStart();
+// main
+
+main();

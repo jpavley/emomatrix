@@ -4,11 +4,27 @@
 import * as grafix from './grafix.js';
 import * as emoji from './emoji.js';
 
+// emoji color
+const emoColors = {
+    green: 'green',
+    red: 'red',
+    yellow: 'yellow',
+    blue: 'blue',
+    current: 'green',
+    timing: 6000
+};
+
+const backgroundColors = {
+    green: '#003300',
+    red: '#330000',
+    yellow: '#333300',
+    blue: '#000033',
+};
+
 // canvas and context
 const canvas = document.createElement('canvas');
 canvas.setAttribute('width', innerWidth);
 canvas.setAttribute('height', innerHeight);
-canvas.style.backgroundColor = '#003300';
 
 // locations
 let centerX = canvas.width / 2;
@@ -80,13 +96,6 @@ const columnProps = {
 };
 
 function getRandomEmojiCodePoint() {
-    const randomEmojiIndex = Math.floor(Math.random() * emoji.greenEmojiCodepoints.length)
-    const randomEmojiCodepoint = emoji.greenEmojiCodepoints[randomEmojiIndex];
-    return randomEmojiCodepoint;
-}
-
-function getRandomEmojiCodePointByColor(emojiColor) {
-    const emojiList = emoji.emojiTable.filter(emo => emo.color == emojiColor)
     const randomEmojiIndex = Math.floor(Math.random() * emojiList.length)
     const randomEmojiCodepoint = emojiList[randomEmojiIndex].codePoint;
     return randomEmojiCodepoint;
@@ -101,8 +110,7 @@ function createSprite(canvas, column) {
 
     const randomCodePoints = [];
     for (let i = 0; i < randomCount; i += 1) {
-        //randomCodePoints.push(getRandomEmojiCodePoint());
-        randomCodePoints.push(getRandomEmojiCodePointByColor('blue'));
+        randomCodePoints.push(getRandomEmojiCodePoint());
 
     }
 
@@ -164,7 +172,27 @@ function draw(timeStamp) {
     game.requestID = requestAnimationFrame(draw);
 }
 
+const colorList = [emoColors.green, emoColors.red, emoColors.yellow, emoColors.blue];
+let currentColorIndex = 0;
+let emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
+canvas.style.backgroundColor = backgroundColors[emoColors.current];
+
+function cycleEmojiColor() {
+    currentColorIndex += 1;
+
+    if (currentColorIndex >= colorList.length) {
+        currentColorIndex = 0
+    }
+    emoColors.current = colorList[currentColorIndex];
+    canvas.style.backgroundColor = backgroundColors[emoColors.current];
+    emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
+
+
+    const timerID = setTimeout(cycleEmojiColor, emoColors.timing);
+}
+
 function start() {
+
     canvas.addEventListener('click', (e) => {
     
         if (game.state == 'running') {
@@ -184,6 +212,7 @@ function start() {
     initSprites(canvas);
     game.state = 'running'
     game.requestID = requestAnimationFrame(draw)
+    const timerID = setTimeout(cycleEmojiColor, emoColors.timing);
 }
 
 function pause() {

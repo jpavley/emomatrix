@@ -22,7 +22,12 @@ const backgroundColors = {
 };
 
 // canvas and context
-const canvas = document.createElement('canvas');
+const backgroundCanvas = document.getElementById('backgroundCanvas');
+backgroundCanvas.setAttribute('width', innerWidth);
+backgroundCanvas.setAttribute('height', innerHeight);
+
+
+const canvas = document.getElementById('canvas');
 canvas.setAttribute('width', innerWidth);
 canvas.setAttribute('height', innerHeight);
 
@@ -45,6 +50,10 @@ canvas.addEventListener('click', (e) => {
 addEventListener("resize", () => {
     location.reload();
 });
+
+document.body.prepend(backgroundCanvas);
+const backgroundCtx = backgroundCanvas.getContext('2d');
+
 
 document.body.prepend(canvas);
 const ctx = canvas.getContext('2d');
@@ -124,8 +133,22 @@ function createSprite(canvas, column) {
     });
 }
 
+function drawBackground() {
+    const ctx = backgroundCtx;
+    const canvas = backgroundCanvas;
+    ctx.save()
+    ctx.beginPath()
+    const linGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    linGrad.addColorStop(0, 'black');
+    linGrad.addColorStop(1, backgroundColors[emoColors.current]);
+    ctx.fillStyle = linGrad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.restore
+}
+
 function draw(timeStamp) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBackground();
 
     grafix.drawDiagonstics(canvas, ctx, timeStamp);
 
@@ -174,7 +197,7 @@ function draw(timeStamp) {
 const colorList = [emoColors.green, emoColors.red, emoColors.yellow, emoColors.blue];
 let currentColorIndex = 0;
 let emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
-canvas.style.backgroundColor = backgroundColors[emoColors.current];
+//canvas.style.backgroundColor = backgroundColors[emoColors.current];
 
 function cycleEmojiColor() {
     currentColorIndex += 1;
@@ -183,7 +206,7 @@ function cycleEmojiColor() {
         currentColorIndex = 0
     }
     emoColors.current = colorList[currentColorIndex];
-    canvas.style.backgroundColor = backgroundColors[emoColors.current];
+    //canvas.style.backgroundColor = backgroundColors[emoColors.current];
     emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
 
     const timerID = setTimeout(cycleEmojiColor, emoColors.timing);
@@ -228,6 +251,7 @@ function unpause() {
 }
 
 function main() {
+    drawBackground();
     const timerID = setTimeout(start,3000);
 }
 

@@ -85,6 +85,14 @@ function getRandomEmojiCodePoint() {
     return randomEmojiCodepoint;
 }
 
+function getRandomEmojiCodePointByColor(emojiColor) {
+    const emojiList = emoji.emojiTable.filter(emo => emo.color == emojiColor)
+    const randomEmojiIndex = Math.floor(Math.random() * emojiList.length)
+    const randomEmojiCodepoint = emojiList[randomEmojiIndex].codePoint;
+    return randomEmojiCodepoint;
+}
+
+
 function createSprite(canvas, column) {
     const columnX = column * sprites.width;
     const randomSpeed = Math.floor(Math.random() * 5) + 2;
@@ -93,7 +101,9 @@ function createSprite(canvas, column) {
 
     const randomCodePoints = [];
     for (let i = 0; i < randomCount; i += 1) {
-        randomCodePoints.push(getRandomEmojiCodePoint());
+        //randomCodePoints.push(getRandomEmojiCodePoint());
+        randomCodePoints.push(getRandomEmojiCodePointByColor('blue'));
+
     }
 
     sprites.list.push({

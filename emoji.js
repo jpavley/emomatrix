@@ -250,25 +250,44 @@ export const emojiTable = [
 
     // G (plants, clothing)
 
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F331, category: 'g', description: 'seedling',     color: 'green'},
+    {codePoint: 0x1FAB4, category: 'g', description: 'potted plant', color: 'green'},
+    {codePoint: 0x1F332, category: 'g', description: 'evergreen',    color: 'green'},
+    {codePoint: 0x1F334, category: 'g', description: 'palm',         color: 'green'},
 
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F921, category: 'g', description: 'clown',  color: 'red'},
+    {codePoint: 0x1F479, category: 'g', description: 'ogre',   color: 'red'},
+    {codePoint: 0x1F47A, category: 'g', description: 'goblin', color: 'red'},
+    {codePoint: 0x1F4AF, category: 'g', description: '100',    color: 'red'},
 
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F3D9, category: 'g', description: 'city', color: 'blue'},
+    {codePoint: 0x1F456, category: 'g', description: 'jeans', color: 'blue'},
+    {codePoint: 0x1F708, category: 'g', description: 'airplane', color: 'blue'},
+    {codePoint: 0x1F4BA, category: 'g', description: 'seat', color: 'blue'},
 
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
-    {codePoint: 0x1F, category: 'g', description: '', color: ''},
+    {codePoint: 0x1F695, category: 'g', description: 'taxi', color: 'yellow'},
+    {codePoint: 0x1F696, category: 'g', description: 'oncoming taxi', color: 'yellow'},
+    {codePoint: 0x1F6A7, category: 'g', description: 'construction', color: 'yellow'},
+    {codePoint: 0x1F31E, category: 'g', description: 'sun', color: 'yellow'},
+
+    // G (anthing left)
+
+    {codePoint: 0x1F335, category: 'g', description: 'catus',            color: 'green'},
+    {codePoint: 0x1F33F, category: 'g', description: 'herb',             color: 'green'},
+    {codePoint: 0x1F340, category: 'g', description: 'four leaf clover', color: 'green'},
+
+    {codePoint: 0x1F9F0, category: 'g', description: 'toolbox',  color: 'red'},
+    {codePoint: 0x1F9F2, category: 'g', description: 'magnet',   color: 'red'},
+    {codePoint: 0x1FA78, category: 'g', description: 'blood drop', color: 'red'},
+
+    {codePoint: 0x1F3BD, category: 'g', description: 'running shirt', color: 'blue'},
+    {codePoint: 0x1F6B9, category: 'g', description: 'mens room', color: 'blue'},
+    {codePoint: 0x1F537, category: 'g', description: 'blue diamond', color: 'blue'},
+
+    {codePoint: 0x1F643, category: 'g', description: 'upside down face', color: 'yellow'},
+    {codePoint: 0x1F92A, category: 'g', description: 'zany face', color: 'yellow'},
+    {codePoint: 0x1F928, category: 'g', description: 'zipper face', color: 'yellow'},
+    
 
 
 

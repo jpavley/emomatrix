@@ -137,7 +137,7 @@ export const emojiTable = [
     {codePoint: 0x1F336, category: 'b', description: 'hot pepper', color: 'red'},
     {codePoint: 0x1F344, category: 'b', description: 'mushroom',   color: 'red'},
 
-    {codePoint: 0x1F347, category: 'b', description: 'grapes',      color: 'blue'},
+    {codePoint: 0x1FAD0, category: 'b', description: 'grapes',      color: 'blue'},
     {codePoint: 0x1FAD0, category: 'b', description: 'blueberries', color: 'blue'},
     {codePoint: 0x1F346, category: 'b', description: 'eggplant',    color: 'blue'},
     {codePoint: 0x1F9CA, category: 'b', description: 'ice',         color: 'blue'},
@@ -188,10 +188,11 @@ export const emojiTable = [
     {codePoint: 0x1F9FC, category: 'd', description: 'soap',         color: 'green'},
 
     {codePoint: 0x1FD4F, category: 'd', description: 'closed book',   color: 'red'},
-    {codePoint: 0x260E,  category: 'd', description: 'telephone',     color: 'red'},
-    {codePoint: 0x1F3FF, category: 'd', description: 'paper lantern', color: 'red'},
+    // TODO: Figure out how to select the emoji variation
+    // {codePoint: 0x260E&0xFE0F,  category: 'd', description: 'telephone',     color: 'red'},
+    {codePoint: 0x1F3EE, category: 'd', description: 'paper lantern', color: 'red'},
     {codePoint: 0x1F58D, category: 'd', description: 'crayon',        color: 'red'},
-    {codePoint: 0x1F4CF, category: 'd', description: 'pushpin',       color: 'red'},
+    {codePoint: 0x1F4CC, category: 'd', description: 'pushpin',       color: 'red'},
 
     {codePoint: 0x1F4D8, category: 'd', description: 'blue book',    color: 'blue'},
     {codePoint: 0x1F48E, category: 'd', description: 'gem stone',    color: 'blue'},
@@ -203,7 +204,8 @@ export const emojiTable = [
     {codePoint: 0x1F4A1, category: 'd', description: 'light bulb', color: 'yellow'},
     {codePoint: 0x1F514, category: 'd', description: 'bell',       color: 'yellow'},
     {codePoint: 0x1F4B0, category: 'd', description: 'money bag',  color: 'yellow'},
-    {codePoint: 0x270F,  category: 'd', description: 'pencil',     color: 'yellow'},
+    // TODO: Figure out how to select the emoji variation
+    //{codePoint: 0x270F,  category: 'd', description: 'pencil',     color: 'yellow'},
 
     // E (mostly people)
 

@@ -170,7 +170,8 @@ export const emojiTable = [
     {codePoint: 0x1F499, category: 'c', description: 'blue heart', color: 'blue'},
     {codePoint: 0x1F4A6, category: 'c', description: 'sweat',      color: 'blue'},
     {codePoint: 0x1F4A4, category: 'c', description: 'zzz',        color: 'blue'},
-    {codePoint: 0x26F2, category:  'c', description: 'fountain',   color: 'blue'},
+    // TODO: Figure out how to select the emoji variation
+    //{codePoint: 0x26F2, category:  'c', description: 'fountain',   color: 'blue'},
     {codePoint: 0x1F694, category: 'c', description: 'police car', color: 'blue'},
 
     {codePoint: 0x1F49B, category: 'c', description: 'yellow heart',  color: 'yellow'},
@@ -205,7 +206,7 @@ export const emojiTable = [
     {codePoint: 0x1F514, category: 'd', description: 'bell',       color: 'yellow'},
     {codePoint: 0x1F4B0, category: 'd', description: 'money bag',  color: 'yellow'},
     // TODO: Figure out how to select the emoji variation
-    //{codePoint: 0x270F,  category: 'd', description: 'pencil',     color: 'yellow'},
+    // {codePoint: 0x270F,  category: 'd', description: 'pencil',     color: 'yellow'},
 
     // E (mostly people)
 

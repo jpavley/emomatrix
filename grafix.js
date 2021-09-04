@@ -429,3 +429,11 @@ export function initGrafix(canvas, bbt) {
         mouseProps.mouseY = e.offsetY;
     });    
 }
+
+export function displayCodepoint(ctx, codePoint, x, y) {
+    ctx.save();
+    ctx.fillStyle = 'white';
+    ctx.font = "12px monospace";
+    ctx.fillText(`${codePoint.toString(16)}`, x, y);
+    ctx.restore();
+}

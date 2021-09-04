@@ -187,6 +187,7 @@ function draw(timeStamp) {
             } else {
                 const newCodePoint = getRandomEmojiCodePoint();
                 ctx.fillText(String.fromCodePoint(newCodePoint), sprite.x, sprite.y - (index * sprite.offset));
+                sprite.codePoints[index] = newCodePoint;
                 // debug
                 //grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
             }

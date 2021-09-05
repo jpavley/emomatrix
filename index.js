@@ -171,11 +171,12 @@ function draw(timeStamp) {
             ctx.shadowOffsetX = 0; 
             ctx.shadowOffsetY = 0; 
 
-            if (index == 0) {
-                ctx.shadowBlur = 6;
-            } else {
-                ctx.shadowBlur = 0;
-            }
+            // TODO: shadowBlur is just too expensive computationally!
+            // if (index == 0) {
+            //     ctx.shadowBlur = 6;
+            // } else {
+            //     ctx.shadowBlur = 0;
+            // }
 
             ctx.globalAlpha = 1.0 - (index * 0.06);
 

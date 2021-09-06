@@ -4,6 +4,39 @@
 import * as grafix from './grafix.js';
 import * as emoji from './emoji.js';
 
+// time keeping
+
+const timeKeeper = {
+    frameCount: 0,
+    generationCount: 0
+};
+
+function initTimeKeeper() {
+    timeKeeper.frameCount = 0;
+    timeKeeper.generationCount = 0;
+}
+
+function reportTimeKeeperCounters() {
+    console.log(`frameCount: ${timeKeeper.frameCount}`);
+    console.log(`generationCount: ${timeKeeper.generationCount}`);
+}
+
+function countGenerations() {
+    timeKeeper.generationCount += 1;
+
+    if (timeKeeper.generationCount == Number.MAX_SAFE_INTEGER) {
+        timeKeeper.generationCount = 0;
+    }
+}
+
+function countFrames() {
+    timeKeeper.frameCount += 1;
+
+    if (timeKeeper.frameCount == Number.MAX_SAFE_INTEGER) {
+        timeKeeper.frameCount = 0;
+    }
+}
+
 // emoji color
 const emoColors = {
     green: 'green',
@@ -163,6 +196,9 @@ function drawBackground() {
 }
 
 function draw(timeStamp) {
+
+    countFrames();
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
 
@@ -218,16 +254,16 @@ function draw(timeStamp) {
 const colorList = [emoColors.green, emoColors.red, emoColors.yellow, emoColors.blue];
 let currentColorIndex = 0;
 let emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
-//canvas.style.backgroundColor = backgroundColors[emoColors.current];
 
 function cycleEmojiColor() {
+    countGenerations();
+
     currentColorIndex += 1;
 
     if (currentColorIndex >= colorList.length) {
         currentColorIndex = 0
     }
     emoColors.current = colorList[currentColorIndex];
-    //canvas.style.backgroundColor = backgroundColors[emoColors.current];
     emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
 
     const timerID = setTimeout(cycleEmojiColor, emoColors.timing);
@@ -236,6 +272,7 @@ function cycleEmojiColor() {
 // start up
 
 function start() {
+    initTimeKeeper();
 
     canvas.addEventListener('click', (e) => {
     
@@ -262,6 +299,7 @@ function start() {
 // click to pause
 
 function pause() {
+    reportTimeKeeperCounters();
     game.state = 'paused';
     cancelAnimationFrame(game.requestID);
 }

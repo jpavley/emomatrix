@@ -11,6 +11,7 @@ const emoColors = {
     yellow: 'yellow',
     blue: 'blue',
     current: 'green',
+    previousBackgroundColor: '',
     timing: 12000
 };
 
@@ -133,18 +134,15 @@ function createSprite(canvas, column) {
     });
 }
 
-let previousBackgroundColor = 'emoColors.current';
-
 function drawBackground() {
-
 
     // Optimization: Don't update backround unless it's color has changed
 
-    if (previousBackgroundColor == emoColors.current) {
+    if (emoColors.previousBackgroundColor == emoColors.current) {
         return; // early return
     } else {
         // cache current background color for future test
-        previousBackgroundColor = emoColors.current;
+        emoColors.previousBackgroundColor = emoColors.current;
     }
 
     // draw background because the emocolor has changed

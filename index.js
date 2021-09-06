@@ -133,7 +133,25 @@ function createSprite(canvas, column) {
     });
 }
 
+let previousBackgroundColor = 'emoColors.current';
+
 function drawBackground() {
+
+
+    // Optimization: Don't update backround unless it's color has changed
+
+    if (previousBackgroundColor == emoColors.current) {
+        return; // early return
+    } else {
+        // cache current background color for future test
+        previousBackgroundColor = emoColors.current;
+    }
+
+    // draw background because the emocolor has changed
+
+    // debug
+    // console.log(`drawBackground(${emoColors.current})`)
+
     const ctx = backgroundCtx;
     const canvas = backgroundCanvas;
     ctx.save()

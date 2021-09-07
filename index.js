@@ -186,9 +186,9 @@ function draw(timeStamp) {
 
         sprite.codePoints.forEach((codePoint, index) => {
 
-            ctx.shadowColor = "white"; 
-            ctx.shadowOffsetX = 0; 
-            ctx.shadowOffsetY = 0; 
+            // ctx.shadowColor = "white"; 
+            // ctx.shadowOffsetX = 0; 
+            // ctx.shadowOffsetY = 0; 
 
             // TODO: shadowBlur is just too expensive computationally!
             // if (index == 0) {
@@ -211,6 +211,8 @@ function draw(timeStamp) {
                 // debug
                 //grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
             }
+
+            // ctx.shadowColor = 'rgba(0,0,0,0)';
         });
         ctx.restore();
     });

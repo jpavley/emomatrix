@@ -4,39 +4,6 @@
 import * as grafix from './grafix.js';
 import * as emoji from './emoji.js';
 
-// time keeping
-
-const timeKeeper = {
-    frameCount: 0,
-    generationCount: 0
-};
-
-function initTimeKeeper() {
-    timeKeeper.frameCount = 0;
-    timeKeeper.generationCount = 0;
-}
-
-function reportTimeKeeperCounters() {
-    console.log(`frameCount: ${timeKeeper.frameCount}`);
-    console.log(`generationCount: ${timeKeeper.generationCount}`);
-}
-
-function countGenerations() {
-    timeKeeper.generationCount += 1;
-
-    if (timeKeeper.generationCount == Number.MAX_SAFE_INTEGER) {
-        timeKeeper.generationCount = 0;
-    }
-}
-
-function countFrames() {
-    timeKeeper.frameCount += 1;
-
-    if (timeKeeper.frameCount == Number.MAX_SAFE_INTEGER) {
-        timeKeeper.frameCount = 0;
-    }
-}
-
 // emoji color
 const emoColors = {
     green: 'green',
@@ -197,7 +164,7 @@ function drawBackground() {
 
 function draw(timeStamp) {
 
-    countFrames();
+    grafix.countFrames();
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
@@ -256,7 +223,7 @@ let currentColorIndex = 0;
 let emojiList = emoji.emojiTable.filter(emo => emo.color == emoColors.current)
 
 function cycleEmojiColor() {
-    countGenerations();
+    grafix.countGenerations();
 
     currentColorIndex += 1;
 
@@ -272,7 +239,7 @@ function cycleEmojiColor() {
 // start up
 
 function start() {
-    initTimeKeeper();
+    grafix.initTimeKeeper();
 
     canvas.addEventListener('click', (e) => {
     
@@ -299,7 +266,7 @@ function start() {
 // click to pause
 
 function pause() {
-    reportTimeKeeperCounters();
+    grafix.reportTimeKeeperCounters();
     game.state = 'paused';
     cancelAnimationFrame(game.requestID);
 }

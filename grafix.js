@@ -437,3 +437,39 @@ export function displayCodepoint(ctx, codePoint, x, y) {
     ctx.fillText(`${codePoint.toString(16)}`, x, y);
     ctx.restore();
 }
+
+/**
+ * Time Keeper
+ * Struct that tracks fames and generations (color changes)
+ * for timing.
+ */
+export const timeKeeper = {
+    frameCount: 0,
+    generationCount: 0
+};
+
+export function initTimeKeeper() {
+    timeKeeper.frameCount = 0;
+    timeKeeper.generationCount = 0;
+}
+
+export function reportTimeKeeperCounters() {
+    console.log(`frameCount: ${timeKeeper.frameCount}`);
+    console.log(`generationCount: ${timeKeeper.generationCount}`);
+}
+
+export function countGenerations() {
+    timeKeeper.generationCount += 1;
+
+    if (timeKeeper.generationCount == Number.MAX_SAFE_INTEGER) {
+        timeKeeper.generationCount = 0;
+    }
+}
+
+export function countFrames() {
+    timeKeeper.frameCount += 1;
+
+    if (timeKeeper.frameCount == Number.MAX_SAFE_INTEGER) {
+        timeKeeper.frameCount = 0;
+    }
+}

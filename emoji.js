@@ -188,7 +188,7 @@ export const emojiTable = [
     {codePoint: 0x1F9EA, category: 'd', description: 'test tube',    color: 'green'},
     {codePoint: 0x1F9FC, category: 'd', description: 'soap',         color: 'green'},
 
-    {codePoint: 0x1FD4F, category: 'd', description: 'closed book',   color: 'red'},
+    {codePoint: 0x1F4D5, category: 'd', description: 'closed book',   color: 'red'},
     // TODO: Figure out how to select the emoji variation
     // {codePoint: 0x260E&0xFE0F,  category: 'd', description: 'telephone',     color: 'red'},
     {codePoint: 0x1F3EE, category: 'd', description: 'paper lantern', color: 'red'},
@@ -265,7 +265,8 @@ export const emojiTable = [
 
     {codePoint: 0x1F3D9, category: 'g', description: 'city', color: 'blue'},
     {codePoint: 0x1F456, category: 'g', description: 'jeans', color: 'blue'},
-    {codePoint: 0x1F708, category: 'g', description: 'airplane', color: 'blue'},
+    // TODO: Figure out how to select the emoji variation
+    // {codePoint: 0x2708, category: 'g', description: 'airplane', color: 'blue'},
     {codePoint: 0x1F4BA, category: 'g', description: 'seat', color: 'blue'},
 
     {codePoint: 0x1F695, category: 'g', description: 'taxi', color: 'yellow'},

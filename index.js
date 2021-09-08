@@ -1,8 +1,8 @@
 // Emo Matrix
 // Copyright (c) John Pavley
 
-import * as grafix from './grafix.js';
-import * as emoji from './emoji.js';
+import * as grafix from '../lib/grafix.js';
+import * as emoji from '../lib/emoji.js';
 
 // emoji color
 const emoColors = {
@@ -203,13 +203,13 @@ function draw(timeStamp) {
             if (swapEmojiThreshold < 999) {
                 ctx.fillText(String.fromCodePoint(codePoint), sprite.x, sprite.y - (index * sprite.offset));
                 // debug
-                grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
+                // grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
             } else {
                 const newCodePoint = getRandomEmojiCodePoint();
                 ctx.fillText(String.fromCodePoint(newCodePoint), sprite.x, sprite.y - (index * sprite.offset));
                 sprite.codePoints[index] = newCodePoint;
                 // debug
-                grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
+                // grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
             }
 
             // ctx.shadowColor = 'rgba(0,0,0,0)';

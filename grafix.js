@@ -444,18 +444,21 @@ export function displayCodepoint(ctx, codePoint, x, y) {
  * for timing.
  */
 export const timeKeeper = {
-    frameCount: 0,
-    generationCount: 0
+    frameCount: 0, // A frame is a rendering of world state
+    generationCount: 0, // A generation is a color
+    cycleCount: 0 // A cycle is 4 generations, cycling thru all colors
 };
 
 export function initTimeKeeper() {
     timeKeeper.frameCount = 0;
     timeKeeper.generationCount = 0;
+    timeKeeper.cycleCount = 0;
 }
 
 export function reportTimeKeeperCounters() {
     console.log(`frameCount: ${timeKeeper.frameCount}`);
     console.log(`generationCount: ${timeKeeper.generationCount}`);
+    console.log(`cycleCount: ${timeKeeper.cycleCount}`);
 }
 
 export function countGenerations() {
@@ -464,6 +467,9 @@ export function countGenerations() {
     if (timeKeeper.generationCount == Number.MAX_SAFE_INTEGER) {
         timeKeeper.generationCount = 0;
     }
+
+    timeKeeper.cycleCount = Math.floor((timeKeeper.generationCount)/4);
+
 }
 
 export function countFrames() {

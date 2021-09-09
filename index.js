@@ -201,12 +201,16 @@ function draw(timeStamp) {
 
             const swapEmojiThreshold = Math.floor(Math.random() * 1000) + 1;
             if (swapEmojiThreshold < 999) {
-                ctx.fillText(String.fromCodePoint(codePoint), sprite.x, sprite.y - (index * sprite.offset));
+                // BUGFIX: To ensure we get the color variant include the selector even if we
+                //         if it's not strictly required. Can't hurt!
+                ctx.fillText(String.fromCodePoint(codePoint,0xFE0F), sprite.x, sprite.y - (index * sprite.offset));
                 // debug
                 // grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
             } else {
                 const newCodePoint = getRandomEmojiCodePoint();
-                ctx.fillText(String.fromCodePoint(newCodePoint), sprite.x, sprite.y - (index * sprite.offset));
+                // BUGFIX: To ensure we get the color variant include the selector even if we
+                //         if it's not strictly required. Can't hurt!
+                ctx.fillText(String.fromCodePoint(newCodePoint,0xFE0F), sprite.x, sprite.y - (index * sprite.offset));
                 sprite.codePoints[index] = newCodePoint;
                 // debug
                 // grafix.displayCodepoint(ctx, codePoint, sprite.x, sprite.y - (index * sprite.offset));
